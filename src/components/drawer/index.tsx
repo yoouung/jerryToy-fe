@@ -102,7 +102,7 @@ const DrawerComponent: React.FC = () => {
         onClose={toggleDrawer(false)}
         BackdropProps={{
           sx: {
-            backgroundColor: "rgba(0, 0, 0, 0.2)", // 배경 오버레이 색상을 더 밝게 설정
+            backgroundColor: "rgba(0, 0, 0, 0.08)", // 배경 오버레이 색상을 더 밝게 설정
           },
         }}
       >
