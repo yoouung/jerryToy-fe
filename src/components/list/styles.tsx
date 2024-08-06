@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ListItem as MuiListItem } from "@mui/material";
+import styled from 'styled-components';
+import { ListItem as MuiListItem } from '@mui/material';
 
 export const PostItem = styled(MuiListItem)`
   display: flex;
