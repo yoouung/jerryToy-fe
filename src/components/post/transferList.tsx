@@ -5,6 +5,7 @@ import {
   ListItemText,
   Checkbox,
   Typography,
+  Box,
 } from '@mui/material';
 
 interface TransferListProps {
@@ -45,8 +46,10 @@ const TransferList: React.FC<TransferListProps> = ({
             disableRipple
           />
           <ListItemText primary={item.nickname} />
-          <Typography variant="body2">{item.mbti}</Typography>
-          <Typography variant="body2">{item.age}세</Typography>
+          <Box sx={{ display: 'flex', gap: '10px' }}>
+            <Typography variant="body2">{item.mbti}</Typography>
+            <Typography variant="body2">{item.age}세</Typography>
+          </Box>
         </ListItem>
       ))}
     </List>

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Divider, List as MuiList, IconButton } from '@mui/material';
+import { Button, Divider, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Drawer, CategoryList, DrawerHeader, CategoryItem } from './styles';
 import ListComponent from '../list';
+import { useNavigate } from 'react-router-dom';
 
 const DrawerComponent: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -14,6 +15,7 @@ const DrawerComponent: React.FC = () => {
     '생활/편의',
     '교육',
   ]);
+  const navigate = useNavigate();
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -87,9 +89,13 @@ const DrawerComponent: React.FC = () => {
         ))}
       </CategoryList>
       <Divider />
-      <ListComponent posts={posts} />
+      <ListComponent posts={posts} onPostClick={navigateToPost} />
     </div>
   );
+
+  const navigateToPost = () => {
+    navigate('/post');
+  };
 
   return (
     <div>

@@ -7,9 +7,10 @@ export const PostContainer = styled.div`
 
 export const UserInfo = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 16px;
   margin-top: 20px;
   margin-bottom: 20px;
+  align-items: center;
 `;
 
 export const DestInfo = styled.div`
@@ -22,8 +23,8 @@ export const DestInfo = styled.div`
 export const ActionsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
   margin-top: 20px;
+  margin-left: -8px;
 `;
 
 export const FavoriteIcon = styled(Favorite)<{ liked: boolean }>`
@@ -51,5 +52,5 @@ export const MetaItem = styled.div`
 `;
 
 export const TransferListContainer = styled.div`
-  margin-top: 20px;
+  margin-left: -20px;
 `;

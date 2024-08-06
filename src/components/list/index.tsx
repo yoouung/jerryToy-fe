@@ -12,9 +12,13 @@ interface Post {
 
 interface ListComponentProps {
   posts: Post[];
+  onPostClick: () => void;
 }
 
-const ListComponent: React.FC<ListComponentProps> = ({ posts }) => {
+const ListComponent: React.FC<ListComponentProps> = ({
+  posts,
+  onPostClick,
+}) => {
   return (
     <List>
       {posts.map((post, index) => (
@@ -23,6 +27,7 @@ const ListComponent: React.FC<ListComponentProps> = ({ posts }) => {
           <ListItemButton
             disableRipple
             sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+            onClick={onPostClick}
           >
             <ListItemText
               primary={post.title}

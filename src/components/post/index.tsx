@@ -22,7 +22,7 @@ import {
 import TransferList from './transferList';
 import { Post } from './types';
 
-// 목업 데이터
+// Mock data
 const mockPost: Post = {
   postId: 1,
   user: {
@@ -72,7 +72,7 @@ const PostDetail: React.FC = () => {
   const [showTransferList, setShowTransferList] = useState(false);
 
   useEffect(() => {
-    // API 호출 대신 목업 데이터 사용
+    // API call replaced with mock data
     const fetchPost = async () => {
       setPost(mockPost);
       setLoading(false);
@@ -90,7 +90,7 @@ const PostDetail: React.FC = () => {
         setLikeList(mockLikedUsers); // Mock data
         setShowTransferList(true);
       } catch (error) {
-        console.error('좋아요 목록 로드 실패:', error);
+        console.error('Failed to load like list:', error);
       }
     } else {
       setShowTransferList(false);
@@ -98,7 +98,7 @@ const PostDetail: React.FC = () => {
   };
 
   const handleChat = () => {
-    // 채팅 화면으로 이동
+    // Navigate to chat screen
     navigate('/chat');
   };
 
@@ -126,9 +126,21 @@ const PostDetail: React.FC = () => {
           {post.title}
         </Typography>
         <UserInfo>
-          <Typography variant="subtitle1">{post.user.nickname}</Typography>
-          <Typography variant="body2">{post.user.age}세</Typography>
-          <Typography variant="body2">{post.user.mbti}</Typography>
+          <Box component="span" sx={{ marginRight: 2 }}>
+            <Typography variant="subtitle1" component="div">
+              {post.user.nickname}
+            </Typography>
+          </Box>
+          <Box component="span" sx={{ marginRight: 2 }}>
+            <Typography variant="body2" component="div">
+              {post.user.age}세
+            </Typography>
+          </Box>
+          <Box component="span">
+            <Typography variant="body2" component="div">
+              {post.user.mbti}
+            </Typography>
+          </Box>
         </UserInfo>
         <ContentContainer>
           <Typography variant="body1" gutterBottom>
@@ -153,15 +165,17 @@ const PostDetail: React.FC = () => {
           <IconButton onClick={handleLike}>
             <FavoriteIcon liked={liked} />
           </IconButton>
-          <Typography variant="body2">{post.likes} 좋아요</Typography>
+          <Typography variant="body2">{post.likes}</Typography>
         </ActionsContainer>
         {showTransferList && (
-          <TransferListContainer>
-            <TransferList
-              items={likeList}
-              checked={checked}
-              setChecked={setChecked}
-            />
+          <>
+            <TransferListContainer>
+              <TransferList
+                items={likeList}
+                checked={checked}
+                setChecked={setChecked}
+              />
+            </TransferListContainer>
             <Button
               variant="contained"
               color="primary"
@@ -170,7 +184,7 @@ const PostDetail: React.FC = () => {
             >
               채팅하기
             </Button>
-          </TransferListContainer>
+          </>
         )}
       </PostContainer>
     </Container>
