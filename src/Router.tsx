@@ -7,6 +7,7 @@ import PostCreatePage from './pages/makePost';
 import PostDetail from './pages/post';
 import SignUpDone from './pages/signUpDone';
 import UserPage from './pages/user';
+import ChatBody from './pages/chatBody';
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
           <Route path="/post" element={<PostDetail />} />
           <Route path="/signUpDone" element={<SignUpDone />} />
           <Route path="/userInfo" element={<UserPage />} />
+          <Route path="/chat" element={<ChatBody />} />
         </Route>
       </Routes>
     </BrowserRouter>
