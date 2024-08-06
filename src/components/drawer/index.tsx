@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Divider, IconButton } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Drawer, CategoryList, DrawerHeader, CategoryItem } from './styles';
 import ListComponent from '../list';
 import { Tag } from '@/types';
@@ -84,13 +85,22 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
       </CategoryItem>
     ));
 
+  const onClose = () => {
+    setDrawerOpen(false);
+  };
+
   const list = () => (
     <div
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <DrawerHeader>망우제3동</DrawerHeader>
+      <DrawerHeader>
+        망우제3동
+        <div onClick={onClose}>
+          <ChevronLeftIcon />
+        </div>
+      </DrawerHeader>
       <CategoryList>
         {selectedTags.length === 0
           ? renderTags(tags)
