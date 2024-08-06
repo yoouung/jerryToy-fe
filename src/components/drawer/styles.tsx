@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Drawer as MuiDrawer } from "@mui/material";
+import styled from 'styled-components';
+import { Drawer as MuiDrawer } from '@mui/material';
 
 export const Drawer = styled(MuiDrawer)`
   .MuiDrawer-paper {
