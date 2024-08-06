@@ -4,6 +4,12 @@ const GlobalStyles = createGlobalStyle`
   @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
   :root {
+    --error-color: #F00001;
+    --default-border-color: #D1D1D1;
+    --focus-border-color: #ffde05;
+
+    --active-button-color: #ffde05;
+    --inactive-button-color: #f6de46;
   }
 
   html,
