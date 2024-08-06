@@ -15,7 +15,7 @@ const AgeSelection: React.FC<AgeSelectionProps> = ({
 
   useEffect(() => {
     onSelect({ age });
-  }, [age]);
+  }, [age, onSelect]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);

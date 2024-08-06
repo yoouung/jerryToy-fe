@@ -15,7 +15,7 @@ const GenderSelection: React.FC<GenderSelectionProps> = ({
 
   useEffect(() => {
     onSelect({ gender });
-  }, [gender]);
+  }, [gender, onSelect]);
 
   const handleSelect = (value: string) => {
     setGender(value);
