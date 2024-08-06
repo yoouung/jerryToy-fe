@@ -10,7 +10,8 @@ import {
 } from './styles';
 import AddIcon from '@mui/icons-material/Add';
 import SendIcon from '@mui/icons-material/Send';
-import { io, Socket } from 'socket.io-client';
+import { Stomp } from '@stomp/stompjs';
+import axios from 'axios';
 
 interface ChatItemType {
   key: number;
@@ -23,41 +24,35 @@ const ChatContent: React.FC = () => {
   const [chat, setChat] = useState<ChatItemType[]>([]);
   const [msg, setMsg] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const socketRef = useRef<Socket | null>(null);
+  const stompClient = useRef<any>(null);
 
-  const chatItems: ChatItemType[] = [
-    {
-      key: 1,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
-      type: '',
-      msg: 'Hi Tim, How are you?',
-    },
-    // ... 더 많은 채팅 아이템들
-  ];
+  const connect = () => {
+    const socket = new WebSocket('ws://localhost:8080/ws');
+    stompClient.current = Stomp.over(socket);
+    stompClient.current.connect({}, () => {
+      stompClient.current.subscribe('/sub/chatroom/1', (message: any) => {
+        const newMessage = JSON.parse(message.body);
+        setChat((prevChat) => [...prevChat, newMessage]);
+      });
+    });
+  };
+
+  const disconnect = () => {
+    if (stompClient.current) {
+      stompClient.current.disconnect();
+    }
+  };
+
+  const fetchMessages = () => {
+    axios.get('http://localhost:8080/chat/1').then((response) => {
+      setChat(response.data);
+    });
+  };
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:4000'); // 서버 주소로 변경
-
-    socketRef.current.on('connect', () => {
-      console.log('Connected to server');
-    });
-
-    socketRef.current.on('message', (message: ChatItemType) => {
-      console.log('Message received:', message);
-      setChat((prevChat) => [...prevChat, message]);
-    });
-
-    socketRef.current.on('disconnect', () => {
-      console.log('Disconnected from server');
-    });
-
-    setChat(chatItems);
-    scrollToBottom();
-
-    return () => {
-      socketRef.current?.disconnect();
-    };
+    connect();
+    fetchMessages();
+    return () => disconnect();
   }, []);
 
   const scrollToBottom = () => {
@@ -69,17 +64,13 @@ const ChatContent: React.FC = () => {
   };
 
   const sendMessage = () => {
-    if (msg.trim() && socketRef.current) {
-      const newMessage: ChatItemType = {
-        key: Date.now(),
-        type: 'me',
-        msg: msg,
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
+    if (stompClient.current && msg.trim()) {
+      const newMessage = {
+        id: 1,
+        name: '테스트1',
+        message: msg,
       };
-      console.log('Sending message:', newMessage);
-      socketRef.current.emit('message', newMessage);
-      setChat([...chat, newMessage]);
+      stompClient.current.send('/pub/message', {}, JSON.stringify(newMessage));
       setMsg('');
       scrollToBottom();
     }
