@@ -7,7 +7,7 @@ import {
   CalendarToday,
   Visibility,
 } from '@mui/icons-material';
-import { Post } from './types';
+import axios from 'axios';
 import {
   PostContainer,
   UserInfo,
@@ -19,8 +19,9 @@ import {
   MetaItem,
   TransferListContainer,
 } from './styles';
-import axios from 'axios';
 import TransferList from './transferList';
+import { Post } from './types';
+
 // 목업 데이터
 const mockPost: Post = {
   postId: 1,
@@ -54,13 +55,19 @@ const mockPost: Post = {
   people: 2,
 };
 
+const mockLikedUsers = [
+  { userId: 1, nickname: '유저1', mbti: 'INTJ', age: 25 },
+  { userId: 2, nickname: '유저2', mbti: 'ENTP', age: 22 },
+  { userId: 3, nickname: '유저3', mbti: 'INFJ', age: 30 },
+];
+
 const PostDetail: React.FC = () => {
   const { postId } = useParams<{ postId: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
   const [liked, setLiked] = useState(false);
-  const [likeList, setLikeList] = useState<any[]>([]);
+  const [likeList, setLikeList] = useState<any[]>(mockLikedUsers);
   const [checked, setChecked] = useState<string[]>([]);
   const [showTransferList, setShowTransferList] = useState(false);
 
@@ -78,8 +85,9 @@ const PostDetail: React.FC = () => {
     setLiked(!liked);
     if (!liked) {
       try {
-        const response = await axios.get(`/api/like/${postId}`);
-        setLikeList(response.data);
+        // const response = await axios.get(`/api/like/${postId}`);
+        // setLikeList(response.data);
+        setLikeList(mockLikedUsers); // Mock data
         setShowTransferList(true);
       } catch (error) {
         console.error('좋아요 목록 로드 실패:', error);

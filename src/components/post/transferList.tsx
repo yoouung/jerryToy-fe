@@ -1,10 +1,16 @@
 import React from 'react';
-import { List, ListItem, ListItemText, Checkbox } from '@mui/material';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Checkbox,
+  Typography,
+} from '@mui/material';
 
 interface TransferListProps {
   items: any[];
   checked: string[];
-  setChecked: React.Dispatch<React.SetStateAction<string[]>>;
+  setChecked: (checked: string[]) => void;
 }
 
 const TransferList: React.FC<TransferListProps> = ({
@@ -22,10 +28,6 @@ const TransferList: React.FC<TransferListProps> = ({
       newChecked.splice(currentIndex, 1);
     }
 
-    if (newChecked.length > 1) {
-      newChecked.splice(0, 1);
-    }
-
     setChecked(newChecked);
   };
 
@@ -34,19 +36,17 @@ const TransferList: React.FC<TransferListProps> = ({
       {items.map((item) => (
         <ListItem
           key={item.userId}
-          role={undefined}
-          dense
           button
-          onClick={handleToggle(item.userId)}
+          onClick={handleToggle(item.nickname)}
         >
           <Checkbox
-            edge="start"
-            checked={checked.indexOf(item.userId) !== -1}
+            checked={checked.indexOf(item.nickname) !== -1}
             tabIndex={-1}
             disableRipple
-            inputProps={{ 'aria-labelledby': item.userId }}
           />
-          <ListItemText id={item.userId} primary={item.nickname} />
+          <ListItemText primary={item.nickname} />
+          <Typography variant="body2">{item.mbti}</Typography>
+          <Typography variant="body2">{item.age}세</Typography>
         </ListItem>
       ))}
     </List>
