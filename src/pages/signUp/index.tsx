@@ -125,12 +125,16 @@ const SignUp: React.FC = () => {
         mbti: Object.values(formData.mbti).join(''),
       };
       console.log('Sending payload:', payload); // Debugging line
-      await axios.post('http://localhost:8080/api/users/register', payload, {
-        headers: {
-          Credentials: 'include',
-          'Content-Type': 'application/json',
-        },
-      });
+      await axios.post(
+        'https://kebdc63ca5156a.user-app.krampoline.com:8080/api/users/register',
+        payload,
+        {
+          headers: {
+            Credentials: 'include',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
