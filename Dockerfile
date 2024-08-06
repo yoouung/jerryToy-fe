@@ -10,8 +10,7 @@ COPY . .
 
 RUN yarn build
 
-# Production stage
-FROM node:18
+FROM krmp-d2hub-idock.9rum.cc/goorm/node:20.16.0
 
 WORKDIR /app
 
