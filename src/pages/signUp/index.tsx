@@ -37,7 +37,7 @@ const SignUp: React.FC = () => {
 
   const handleNext = () => {
     if (step === steps.length - 1) {
-      navigate('/sign-done');
+      navigate('/signUpDone');
     } else {
       setStep((prevStep) => prevStep + 1);
     }

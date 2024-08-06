@@ -7,6 +7,7 @@ export const Container = styled(Box)`
   align-items: center;
   text-align: center;
   margin: 16px;
+  padding-top: 200px;
 `;
 
 export const CongratulationsImage = styled.img`
@@ -15,5 +16,4 @@ export const CongratulationsImage = styled.img`
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #f44336; /* Red border color */
 `;
