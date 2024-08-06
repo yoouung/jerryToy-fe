@@ -1,4 +1,4 @@
-FROM krmp-d2hub-idock.9rum.cc/goorm/node:16
+FROM krmp-d2hub-idock.9rum.cc/goorm/node:20.16.0
 WORKDIR /usr/src/app
 COPY . .
 RUN npm ci
