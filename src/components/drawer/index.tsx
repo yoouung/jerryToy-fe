@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
-import { Button, Divider, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React, { useEffect, useState } from 'react';
+import { Divider, IconButton } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import MenuIcon from '@mui/icons-material/Menu';
 import { Drawer, CategoryList, DrawerHeader, CategoryItem } from './styles';
 import ListComponent from '../list';
-import { useNavigate } from 'react-router-dom';
+import { Tag } from '@/types';
+import { ButtonTagStyle } from '../floatTags/styles';
 
-const DrawerComponent: React.FC = () => {
+interface DrawerComponentProps {
+  tagList: Tag[];
+  selectedTags: Tag[];
+}
+
+const DrawerComponent: React.FC<DrawerComponentProps> = ({
+  tagList,
+  selectedTags,
+}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [categories, setCategories] = useState([
-    '인기글',
-    '맛집',
-    '병원/약국',
-    '생활/편의',
-    '교육',
-  ]);
-  const navigate = useNavigate();
+  const [tags, setTags] = useState(tagList);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -31,7 +33,7 @@ const DrawerComponent: React.FC = () => {
 
   const handleRemoveCategory = (index: number, event: React.MouseEvent) => {
     event.stopPropagation(); // 이벤트 전파를 막음
-    setCategories(categories.filter((_, i) => i !== index));
+    setTags(tags.filter((_, i) => i !== index));
   };
 
   const posts = [
@@ -66,6 +68,21 @@ const DrawerComponent: React.FC = () => {
     },
   ];
 
+  const renderTags = (tagsToRender: Tag[]) =>
+    tagsToRender.map((tag, index) => (
+      <CategoryItem key={tag.tag}>
+        <span>{tag.name}</span>
+        <IconButton
+          size="small"
+          edge="end"
+          aria-label="delete"
+          onClick={(event) => handleRemoveCategory(index, event)}
+        >
+          <ClearIcon fontSize="small" />
+        </IconButton>
+      </CategoryItem>
+    ));
+
   const list = () => (
     <div
       role="presentation"
@@ -74,19 +91,9 @@ const DrawerComponent: React.FC = () => {
     >
       <DrawerHeader>망우제3동</DrawerHeader>
       <CategoryList>
-        {categories.map((text, index) => (
-          <CategoryItem key={index}>
-            <span>{text}</span>
-            <IconButton
-              size="small"
-              edge="end"
-              aria-label="delete"
-              onClick={(event) => handleRemoveCategory(index, event)}
-            >
-              <ClearIcon fontSize="small" />
-            </IconButton>
-          </CategoryItem>
-        ))}
+        {selectedTags.length === 0
+          ? renderTags(tags)
+          : renderTags(selectedTags)}
       </CategoryList>
       <Divider />
       <ListComponent posts={posts} onPostClick={navigateToPost} />
@@ -99,19 +106,13 @@ const DrawerComponent: React.FC = () => {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>
-        <MenuIcon />
-      </Button>
-      <Drawer
-        anchor="left"
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        BackdropProps={{
-          sx: {
-            backgroundColor: 'rgba(0, 0, 0, 0.08)', // 배경 오버레이 색상을 더 밝게 설정
-          },
-        }}
-      >
+      <ButtonTagStyle onClick={toggleDrawer(true)}>
+        <MenuIcon
+          style={{ width: '10px', height: '10px', marginRight: '3px' }}
+        />
+        조회
+      </ButtonTagStyle>
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         {list()}
       </Drawer>
     </div>
