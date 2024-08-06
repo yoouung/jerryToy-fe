@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChatBodyContainer } from './styles';
-import ChatContent from '../chatContent';
+import ChatContent from '../../components/chat/chatContent';
 
 const ChatBody: React.FC = () => {
   return (
