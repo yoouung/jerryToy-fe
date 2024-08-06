@@ -1,17 +1,21 @@
+import DrawerComponent from '../components/drawer';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 390px;
   height: 100vh;
-  width: 100%;
 `;
 
 const MapContainer = styled.div`
-  width: 390px;
+  width: 100%;
   height: 100%;
+`;
+
+const DrawerWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  z-index: 1000;
 `;
 
 declare global {
@@ -34,9 +38,14 @@ const Map = () => {
     setMap(new kakao.maps.Map(mapContainer, mapOption));
   }, []);
 
+  // TODO: drawer-list 위치 수정
+
   return (
     <Container>
-      <MapContainer id="map"></MapContainer>
+      <MapContainer id="map" />
+      <DrawerWrapper>
+        <DrawerComponent />
+      </DrawerWrapper>
     </Container>
   );
 };
