@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 import { Button, Box } from '@mui/material';
 
-export const Container = styled(Box)`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  margin: 16px;
+  padding: 20px;
 `;
 
 export const SelectionButton = styled(Button)`
-  margin: 8px;
+  margin: 5px;
 `;
 
-export const NextButton = styled(Button)`
-  margin-top: 16px;
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+`;
+
+export const StepperContainer = styled.div`
+  width: 100%;
+  padding: 20px;
 `;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Box } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import { Container, SelectionButton } from './styles';
 
 interface GenderSelectionProps {
@@ -17,14 +17,14 @@ const GenderSelection: React.FC<GenderSelectionProps> = ({
     onSelect({ gender });
   }, [gender]);
 
-  const handleSelect = (gender: string) => {
-    setGender(gender);
+  const handleSelect = (value: string) => {
+    setGender(value);
   };
 
   return (
     <Container>
-      <Typography variant="h6">회원님의 성별은 무엇인가요?</Typography>
-      <Box mt={2}>
+      <Typography variant="h6">회원님의 성별을 선택해주세요</Typography>
+      <Box>
         <SelectionButton
           variant={gender === '남성' ? 'contained' : 'outlined'}
           onClick={() => handleSelect('남성')}

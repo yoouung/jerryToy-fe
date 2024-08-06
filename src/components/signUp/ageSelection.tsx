@@ -1,41 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, TextField, Box } from '@mui/material';
+import { TextField, Typography, Box } from '@mui/material';
 import { Container } from './styles';
 
 interface AgeSelectionProps {
-  onSelect: (data: { birthdate: string }) => void;
-  selectedBirthdate: string;
+  onSelect: (data: { age: number }) => void;
+  selectedAge: number;
 }
 
 const AgeSelection: React.FC<AgeSelectionProps> = ({
   onSelect,
-  selectedBirthdate,
+  selectedAge,
 }) => {
-  const [birthdate, setBirthdate] = useState(selectedBirthdate);
+  const [age, setAge] = useState<number>(selectedAge);
 
   useEffect(() => {
-    onSelect({ birthdate });
-  }, [birthdate, onSelect]);
+    onSelect({ age });
+  }, [age]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setBirthdate(event.target.value);
+    const value = Number(event.target.value);
+    if (value >= 1 && value <= 100) {
+      setAge(value);
+    }
   };
 
   return (
     <Container>
-      <Typography variant="h6">생년월일을 입력해주세요</Typography>
-      <Box mt={2}>
+      <Typography variant="h6">나이를 입력해주세요</Typography>
+      <Box component="form" noValidate autoComplete="off">
         <TextField
-          label="생년월일"
-          type="date"
-          variant="outlined"
+          label="나이"
+          type="number"
+          value={age}
+          onChange={handleChange}
           fullWidth
           margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={birthdate}
-          onChange={handleChange}
+          inputProps={{ min: 1, max: 100 }}
         />
       </Box>
     </Container>

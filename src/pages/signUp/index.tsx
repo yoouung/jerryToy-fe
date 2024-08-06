@@ -19,7 +19,7 @@ const steps = [
   '아이디와 비밀번호',
   '닉네임 설정',
   '성별 선택',
-  '생년월일 입력',
+  '나이 입력',
   'MBTI 선택',
 ];
 
@@ -31,8 +31,8 @@ const SignUp: React.FC = () => {
     confirmPassword: '',
     nickname: '',
     gender: '',
-    birthdate: '',
-    mbti: [] as string[],
+    age: 0,
+    mbti: {} as { [key: string]: string },
   });
   const navigate = useNavigate();
 
@@ -79,10 +79,7 @@ const SignUp: React.FC = () => {
         );
       case 3:
         return (
-          <AgeSelection
-            onSelect={handleSelect}
-            selectedBirthdate={formData.birthdate}
-          />
+          <AgeSelection onSelect={handleSelect} selectedAge={formData.age} />
         );
       case 4:
         return (
@@ -105,9 +102,14 @@ const SignUp: React.FC = () => {
     } else if (step === 2) {
       return formData.gender === '';
     } else if (step === 3) {
-      return formData.birthdate === '';
+      return formData.age <= 0 || formData.age > 100;
     } else if (step === 4) {
-      return formData.mbti.length < 4;
+      return (
+        !formData.mbti['e'] ||
+        !formData.mbti['s'] ||
+        !formData.mbti['t'] ||
+        !formData.mbti['j']
+      );
     }
     return false;
   };
@@ -118,11 +120,16 @@ const SignUp: React.FC = () => {
         username: formData.username,
         password: formData.password,
         nickname: formData.nickname,
-        age: parseInt(formData.birthdate), // Assuming birthdate is converted to age
+        age: formData.age,
         gender: formData.gender,
-        mbti: formData.mbti.join(''),
+        mbti: Object.values(formData.mbti).join(''),
       };
-      await axios.post('http://localhost:8080/api/users/register', payload);
+      console.log('Sending payload:', payload); // Debugging line
+      await axios.post('http://localhost:8080/api/users/register', payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
