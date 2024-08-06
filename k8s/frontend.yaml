@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_d6dce6ccda23
+        image: krmp-d2hub-idock.9rum.cc/dev-test/repo_80b51d6a3219
         ports:
         - containerPort: 80
 ---
@@ -24,6 +24,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
+  annotations:
+    kargo.9rum.cc/app-name: app_ce55527b8490
+    kargo.9rum.cc/phase: dev
   labels:
     app.kubernetes.io/managed-by: kargocd
 spec:
@@ -33,4 +36,4 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-  type: ClusterIP # 이 줄을 추가하거나 명확히 지정
+  type: ClusterIP
