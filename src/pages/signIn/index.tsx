@@ -5,8 +5,14 @@ import NicknameSetting from '../../components/signIn/nicknameSetting';
 import GenderSelection from '../../components/signIn/genderSelection';
 import AgeSelection from '../../components/signIn/ageSelection';
 import MBTISelection from '../../components/signIn/mbtiSelection';
-import { Container, NextButton, PrevButton, ButtonContainer } from './styles';
-import { Stepper, Step, StepLabel, Box } from '@mui/material';
+import {
+  Container,
+  NextButton,
+  PrevButton,
+  ButtonContainer,
+  StepperContainer,
+} from './styles';
+import { Stepper, Step, StepLabel } from '@mui/material';
 
 const steps = [
   '아이디와 비밀번호',
@@ -21,6 +27,7 @@ const SignIn: React.FC = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
+    confirmPassword: '',
     nickname: '',
     gender: '',
     birthdate: '',
@@ -52,6 +59,7 @@ const SignIn: React.FC = () => {
             onSelect={handleSelect}
             selectedUsername={formData.username}
             selectedPassword={formData.password}
+            selectedConfirmPassword={formData.confirmPassword}
           />
         );
       case 1:
@@ -84,15 +92,36 @@ const SignIn: React.FC = () => {
     }
   };
 
+  const isNextButtonDisabled = () => {
+    if (step === 0) {
+      return (
+        formData.username === '' ||
+        formData.password === '' ||
+        formData.password !== formData.confirmPassword
+      );
+    } else if (step === 1) {
+      return formData.nickname === '';
+    } else if (step === 2) {
+      return formData.gender === '';
+    } else if (step === 3) {
+      return formData.birthdate === '';
+    } else if (step === 4) {
+      return formData.mbti.length < 4;
+    }
+    return false;
+  };
+
   return (
     <Container>
-      <Stepper activeStep={step} alternativeLabel sx={{ paddingBottom: 3 }}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      <StepperContainer>
+        <Stepper activeStep={step} alternativeLabel>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+      </StepperContainer>
       {renderStep()}
       <ButtonContainer>
         <PrevButton
@@ -106,14 +135,7 @@ const SignIn: React.FC = () => {
           variant="contained"
           color="primary"
           onClick={handleNext}
-          disabled={
-            (step === 0 &&
-              (formData.username === '' || formData.password === '')) ||
-            (step === 1 && formData.nickname === '') ||
-            (step === 2 && formData.gender === '') ||
-            (step === 3 && formData.birthdate === '') ||
-            (step === 4 && formData.mbti.length < 4)
-          }
+          disabled={isNextButtonDisabled()}
         >
           {step === steps.length - 1 ? '완료' : '다음'}
         </NextButton>
