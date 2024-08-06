@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Map from './pages/index';
 import SignUp from './pages/signUp';
 import SignDone from './pages/signUpDone';
-import OutLetContainer from './pages/index';
-import LoginScreen from './pages/login';
 import LoginScreen from './pages/login';
 import Map from './pages/map';
 import OutLetContainer from './pages';
