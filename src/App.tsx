@@ -1,12 +1,19 @@
-import Map from './pages';
-import DrawerComponent from './components/drawer';
+import styled from 'styled-components';
+import Router from './Router';
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+`;
 
 const App = () => {
   return (
-    <div>
-      <DrawerComponent />
-      <Map />
-    </div>
+    <Container>
+      <Router />
+    </Container>
   );
 };
 
