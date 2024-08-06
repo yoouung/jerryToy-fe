@@ -8,8 +8,8 @@ export const Container = styled(Box)`
   text-align: center;
   width: 390px;
   height: 100vh;
-  margin: 0 auto; /* 수평 중앙 정렬 */
-  padding-top: 32px; /* 상단 패딩 추가 */
+  margin: 0 auto;
+  padding-top: 32px;
   position: relative;
 `;
 

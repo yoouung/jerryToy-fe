@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AccountSetup from '../../components/signIn/accountSetup';
-import NicknameSetting from '../../components/signIn/nicknameSetting';
-import GenderSelection from '../../components/signIn/genderSelection';
-import AgeSelection from '../../components/signIn/ageSelection';
-import MBTISelection from '../../components/signIn/mbtiSelection';
+import AccountSetup from '../../components/signUp/accountSetup';
+import NicknameSetting from '../../components/signUp/nicknameSetting';
+import GenderSelection from '../../components/signUp/genderSelection';
+import AgeSelection from '../../components/signUp/ageSelection';
+import MBTISelection from '../../components/signUp/mbtiSelection';
 import {
   Container,
   NextButton,
@@ -22,7 +22,7 @@ const steps = [
   'MBTI 선택',
 ];
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     username: '',
@@ -144,4 +144,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
