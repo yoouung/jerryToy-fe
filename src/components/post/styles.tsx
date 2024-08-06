@@ -32,8 +32,8 @@ export const FavoriteIcon = styled(Favorite)<{ liked: boolean }>`
 `;
 
 export const ContentContainer = styled.div`
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   word-wrap: break-word;
   white-space: pre-wrap;
 `;

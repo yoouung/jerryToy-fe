@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Typography, Box, IconButton, Button } from '@mui/material';
+import {
+  Container,
+  Typography,
+  Box,
+  IconButton,
+  Button,
+  Paper,
+} from '@mui/material';
 import {
   Favorite,
   LocationOn,
   CalendarToday,
   Visibility,
+  Person,
+  Cake,
+  EmojiPeople,
 } from '@mui/icons-material';
 import axios from 'axios';
 import {
@@ -47,7 +57,7 @@ const mockPost: Post = {
     tagList: ['자연', '휴식'],
   },
   title: '제주도 탐방기',
-  content: '제주도는 정말 아름다운 곳입니다...',
+  content: '제주도는 정말 아름다운 곳입니다! 나랑같이 해변에서 놀사람 구함!',
   postDate: '2023-08-01',
   tag: '여행',
   likes: 20,
@@ -120,50 +130,60 @@ const PostDetail: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="md" sx={{ paddingTop: '20px' }}>
+    <Container maxWidth="md" sx={{ paddingTop: '30px' }}>
       <PostContainer>
         <Typography variant="h4" component="div" gutterBottom>
           {post.title}
         </Typography>
+
         <UserInfo>
-          <Box component="span" sx={{ marginRight: 2 }}>
+          <Box display="flex" alignItems="center" sx={{ gap: 2 }}>
+            <Person sx={{ color: 'orange' }} />
             <Typography variant="subtitle1" component="div">
               {post.user.nickname}
             </Typography>
           </Box>
-          <Box component="span" sx={{ marginRight: 2 }}>
+          <Box display="flex" alignItems="center" sx={{ gap: 2 }}>
+            <Cake sx={{ color: 'pink' }} />
             <Typography variant="body2" component="div">
               {post.user.age}세
             </Typography>
           </Box>
-          <Box component="span">
+          <Box display="flex" alignItems="center" sx={{ gap: 2 }}>
+            <EmojiPeople sx={{ color: 'orange' }} />
             <Typography variant="body2" component="div">
               {post.user.mbti}
             </Typography>
           </Box>
         </UserInfo>
-        <ContentContainer>
-          <Typography variant="body1" gutterBottom>
-            {post.content}
-          </Typography>
-        </ContentContainer>
+
+        <Paper elevation={3} sx={{ padding: 1, marginBottom: 2 }}>
+          <ContentContainer>
+            <Typography variant="body1" gutterBottom>
+              {post.content}
+            </Typography>
+          </ContentContainer>
+        </Paper>
         <DestInfo>
-          <LocationOn color="action" />
+          <LocationOn sx={{ color: 'green' }} />
           <Typography variant="body2">{post.dest.destName}</Typography>
         </DestInfo>
         <MetaData>
           <MetaItem>
-            <CalendarToday color="action" />
+            <CalendarToday sx={{ color: 'blue' }} />
             {post.postDate}
           </MetaItem>
           <MetaItem>
-            <Visibility color="action" />
+            <Visibility sx={{ color: 'blue' }} />
             {post.views} 조회수
           </MetaItem>
         </MetaData>
         <ActionsContainer>
           <IconButton onClick={handleLike}>
-            <FavoriteIcon liked={liked} />
+            <FavoriteIcon
+              liked={liked}
+              sx={{ color: liked ? 'red' : 'gray' }}
+            />
           </IconButton>
           <Typography variant="body2">{post.likes}</Typography>
         </ActionsContainer>
