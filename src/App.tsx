@@ -1,4 +1,3 @@
-import './App.css';
 import Map from './pages';
 import DrawerComponent from './components/drawer';
 
