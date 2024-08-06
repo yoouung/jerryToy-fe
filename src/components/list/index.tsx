@@ -1,6 +1,6 @@
-import React from "react";
-import { List, ListItemButton, ListItemText } from "@mui/material";
-import { PostItem, PostTag, PostSubtitle, PostInfo } from "./styles";
+import React from 'react';
+import { List, ListItemButton, ListItemText } from '@mui/material';
+import { PostItem, PostTag, PostSubtitle, PostInfo } from './styles';
 
 interface Post {
   tag: string;
@@ -22,7 +22,7 @@ const ListComponent: React.FC<ListComponentProps> = ({ posts }) => {
           <PostTag>{post.tag}</PostTag>
           <ListItemButton
             disableRipple
-            sx={{ "&:hover": { backgroundColor: "transparent" } }}
+            sx={{ '&:hover': { backgroundColor: 'transparent' } }}
           >
             <ListItemText
               primary={post.title}
