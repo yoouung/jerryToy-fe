@@ -22,14 +22,14 @@ const AccountSetup: React.FC<AccountSetupProps> = ({
   const [username, setUsername] = useState<string>(selectedUsername);
   const [password, setPassword] = useState<string>(selectedPassword);
   const [confirmPassword, setConfirmPassword] = useState<string>(
-    selectedConfirmPassword,
+    selectedConfirmPassword
   );
   const [passwordMatch, setPasswordMatch] = useState<boolean>(true);
 
   useEffect(() => {
     onSelect({ username, password, confirmPassword });
     setPasswordMatch(password === confirmPassword);
-  }, [username, password, confirmPassword]);
+  }, [username, password, confirmPassword, onSelect]);
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -40,7 +40,7 @@ const AccountSetup: React.FC<AccountSetupProps> = ({
   };
 
   const handleConfirmPasswordChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setConfirmPassword(event.target.value);
   };

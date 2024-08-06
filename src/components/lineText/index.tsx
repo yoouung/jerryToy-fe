@@ -24,7 +24,9 @@ const LineText = ({ text, textLine }: Props) => {
       {textLine ? (
         <StyledLink to="/login">{text}</StyledLink>
       ) : (
-        <TextWrapper textLine={textLine} onClick={handleClick} children={text} />
+        <TextWrapper textLine={textLine} onClick={handleClick}>
+          {text}
+        </TextWrapper>
       )}
     </>
   );

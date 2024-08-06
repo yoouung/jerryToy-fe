@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import AccountSetup from '../../components/signUp/accountSetup';
 import NicknameSetting from '../../components/signUp/nicknameSetting';
 import GenderSelection from '../../components/signUp/genderSelection';
@@ -18,7 +19,7 @@ const steps = [
   '아이디와 비밀번호',
   '닉네임 설정',
   '성별 선택',
-  '생년월일 입력',
+  '나이 입력',
   'MBTI 선택',
 ];
 
@@ -30,14 +31,15 @@ const SignUp: React.FC = () => {
     confirmPassword: '',
     nickname: '',
     gender: '',
-    birthdate: '',
-    mbti: [] as string[],
+    age: 0,
+    mbti: {} as { [key: string]: string },
   });
   const navigate = useNavigate();
+  const baseUrl = new URL(window.location.href).origin;
 
   const handleNext = () => {
     if (step === steps.length - 1) {
-      navigate('/sign-done');
+      handleSubmit();
     } else {
       setStep((prevStep) => prevStep + 1);
     }
@@ -78,10 +80,7 @@ const SignUp: React.FC = () => {
         );
       case 3:
         return (
-          <AgeSelection
-            onSelect={handleSelect}
-            selectedBirthdate={formData.birthdate}
-          />
+          <AgeSelection onSelect={handleSelect} selectedAge={formData.age} />
         );
       case 4:
         return (
@@ -104,11 +103,41 @@ const SignUp: React.FC = () => {
     } else if (step === 2) {
       return formData.gender === '';
     } else if (step === 3) {
-      return formData.birthdate === '';
+      return formData.age <= 0 || formData.age > 100;
     } else if (step === 4) {
-      return formData.mbti.length < 4;
+      return (
+        !formData.mbti['e'] ||
+        !formData.mbti['s'] ||
+        !formData.mbti['t'] ||
+        !formData.mbti['j']
+      );
     }
     return false;
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const payload = {
+        username: formData.username,
+        password: formData.password,
+        nickname: formData.nickname,
+        age: formData.age,
+        gender: formData.gender,
+        mbti: Object.values(formData.mbti).join(''),
+      };
+      console.log('Sending payload:', payload); // Debugging line
+
+      await axios.post(`${baseUrl}/api/users/register`, payload, {
+        headers: {
+          Credentials: 'include',
+          'Content-Type': 'application/json',
+        },
+      });
+      navigate('/signUpDone');
+    } catch (error) {
+      console.error('회원가입 오류:', error);
+      // 오류 처리 로직 추가
+    }
   };
 
   return (

@@ -1,4 +1,4 @@
-FROM node:18 as build
+FROM krmp-d2hub-idock.9rum.cc/goorm/node:20.16.0
 
 WORKDIR /app
 
@@ -10,10 +10,8 @@ COPY . .
 
 RUN yarn build
 
-FROM nginx:alpine
+RUN npm i -g serve
 
-COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 3000
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "build"]

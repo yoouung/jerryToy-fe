@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Typography, Button, Box } from '@mui/material';
 import { Container, CongratulationsImage } from './styles';
 
-const SignDone: React.FC = () => {
+const SignUpDone: React.FC = () => {
   const navigate = useNavigate();
 
   const handleStart = () => {
@@ -32,4 +32,4 @@ const SignDone: React.FC = () => {
   );
 };
 
-export default SignDone;
+export default SignUpDone;

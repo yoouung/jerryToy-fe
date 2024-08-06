@@ -10,9 +10,10 @@ import {
   CoverImage,
   ImgContainer,
 } from './styles';
-import { TitleStyle } from '@/components/title/styles';
-import LineText from '@/components/lineText';
-import { SubmitBtn } from '@/components/submitBtn';
+import { TitleStyle } from '../../components/title/styles';
+import LineText from '../../components/lineText';
+import { SubmitBtn } from '../../components/submitBtn';
+import axios from 'axios';
 
 // TODO: logo 설정
 import cover from '../../assets/cover.png';
@@ -81,15 +82,23 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     if (isButtonActive) {
-      alert('로그인 성공');
+      try {
+        const payload = {
+          username: email,
+          password: password,
+        };
 
-      navigate('/map');
+        axios.post(window.location.hostname + '/api/login', payload);
+        navigate('/map');
+      } catch (error) {
+        console.error('로그인 오류', error);
+      }
     }
   };
 
   const handleKeyDown = (
     e: React.KeyboardEvent,
-    nextRef?: React.RefObject<HTMLInputElement>,
+    nextRef?: React.RefObject<HTMLInputElement>
   ) => {
     if (e.key === 'Enter' || e.key === 'Tab') {
       e.preventDefault();

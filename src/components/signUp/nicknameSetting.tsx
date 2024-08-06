@@ -15,7 +15,7 @@ const NicknameSetting: React.FC<NicknameSettingProps> = ({
 
   useEffect(() => {
     onSelect({ nickname });
-  }, [nickname]);
+  }, [nickname, onSelect]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNickname(event.target.value);
