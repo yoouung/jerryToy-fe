@@ -10,9 +10,9 @@ import {
   CoverImage,
   ImgContainer,
 } from './styles';
-import { TitleStyle } from '@/components/title/styles';
-import LineText from '@/components/lineText';
-import { SubmitBtn } from '@/components/submitBtn';
+import { TitleStyle } from '../../components/title/styles';
+import LineText from '../../components/lineText';
+import { SubmitBtn } from '../../components/submitBtn';
 
 // TODO: logo 설정
 import cover from '../../assets/cover.png';
@@ -89,7 +89,7 @@ const LoginScreen = () => {
 
   const handleKeyDown = (
     e: React.KeyboardEvent,
-    nextRef?: React.RefObject<HTMLInputElement>,
+    nextRef?: React.RefObject<HTMLInputElement>
   ) => {
     if (e.key === 'Enter' || e.key === 'Tab') {
       e.preventDefault();

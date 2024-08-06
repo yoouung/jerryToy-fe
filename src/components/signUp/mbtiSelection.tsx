@@ -26,7 +26,7 @@ const MBTISelection: React.FC<MBTISelectionProps> = ({
 
   useEffect(() => {
     onSelect({ mbti });
-  }, [mbti]);
+  }, [mbti, onSelect]);
 
   const handleSelect = (type: string) => {
     const newMbti = mbti.includes(type)

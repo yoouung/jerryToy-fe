@@ -24,12 +24,12 @@ const TextInput = forwardRef<HTMLInputElement, Props>(
       disabled = false,
       nextRef,
     },
-    ref,
+    ref
   ) => {
     const [text, setText] = useState(value);
 
     const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
-      let value = ev.target.value;
+      const value = ev.target.value;
       setText(value);
       onChange({ value });
     };
@@ -56,7 +56,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>(
         disabled={disabled}
       />
     );
-  },
+  }
 );
 
 const resetInputStyles = `

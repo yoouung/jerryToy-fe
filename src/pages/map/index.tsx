@@ -31,7 +31,7 @@ const Map = () => {
     };
 
     setMap(new kakao.maps.Map(mapContainer, mapOption));
-  }, []);
+  }, [kakao.maps.LatLng, kakao.maps.Map]);
 
   // TODO: drawer-list 위치 수정
 
