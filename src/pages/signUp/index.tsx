@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import AccountSetup from '../../components/signUp/accountSetup';
 import NicknameSetting from '../../components/signUp/nicknameSetting';
 import GenderSelection from '../../components/signUp/genderSelection';
@@ -37,7 +38,7 @@ const SignUp: React.FC = () => {
 
   const handleNext = () => {
     if (step === steps.length - 1) {
-      navigate('/sign-done');
+      handleSubmit();
     } else {
       setStep((prevStep) => prevStep + 1);
     }
@@ -109,6 +110,24 @@ const SignUp: React.FC = () => {
       return formData.mbti.length < 4;
     }
     return false;
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const payload = {
+        username: formData.username,
+        password: formData.password,
+        nickname: formData.nickname,
+        age: parseInt(formData.birthdate), // Assuming birthdate is converted to age
+        gender: formData.gender,
+        mbti: formData.mbti.join(''),
+      };
+      await axios.post('http://localhost:8080/api/users/register', payload);
+      navigate('/signUpDone');
+    } catch (error) {
+      console.error('회원가입 오류:', error);
+      // 오류 처리 로직 추가
+    }
   };
 
   return (
