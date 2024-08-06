@@ -15,7 +15,7 @@ export const ChatContentContainer = styled.div`
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: #f8f8f8;
+  background-color: #f3f3f3;
   border-radius: 10px;
   height: 100vh;
   width: 100%;
@@ -50,6 +50,7 @@ export const Body = styled.div`
   flex-grow: 1;
   overflow-y: auto;
   margin-top: 20px;
+  margin-right: -20px;
 
   .chat__items {
     display: flex;
