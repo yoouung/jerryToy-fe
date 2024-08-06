@@ -126,16 +126,12 @@ const SignUp: React.FC = () => {
       };
       console.log('Sending payload:', payload); // Debugging line
 
-      await axios.post(
-        window.location.hostname + '/api/users/register',
-        payload,
-        {
-          headers: {
-            Credentials: 'include',
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      await axios.post('/api/users/register', payload, {
+        headers: {
+          Credentials: 'include',
+          'Content-Type': 'application/json',
+        },
+      });
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
