@@ -122,7 +122,11 @@ const SignUp: React.FC = () => {
         gender: formData.gender,
         mbti: formData.mbti.join(''),
       };
-      await axios.post('http://localhost:8080/api/users/register', payload);
+      await axios.post('/api/users/register', payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
