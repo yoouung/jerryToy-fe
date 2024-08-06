@@ -3,6 +3,9 @@ import Map from './pages/index';
 import SignIn from './pages/signIn';
 import SignDone from './pages/signDone';
 import OutLetContainer from './pages/index';
+import LoginScreen from './pages/login';
+import Map from './pages/map';
+import OutLetContainer from './pages';
 
 const Router = () => {
   return (
@@ -14,6 +17,7 @@ const Router = () => {
           <Route path="map" element={<Map />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-done" element={<SignDone />} />
+          <Route path="/login" element={<LoginScreen />} />
         </Route>
       </Routes>
     </BrowserRouter>
