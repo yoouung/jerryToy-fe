@@ -103,7 +103,7 @@ const PostCreatePage: React.FC = () => {
           value={destName}
           onChange={(e) => {
             const selectedPlace = locations.find(
-              (location) => location.destName === e.target.value,
+              (location) => location.destName === e.target.value
             );
             if (selectedPlace) {
               handleSelectLocation(selectedPlace);

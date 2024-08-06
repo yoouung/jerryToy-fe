@@ -37,7 +37,7 @@ const ChatContent: React.FC = () => {
   useEffect(() => {
     setChat(chatItems);
     scrollToBottom();
-  }, []);
+  }, [setChat]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
