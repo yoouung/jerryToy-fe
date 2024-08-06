@@ -10,10 +10,6 @@ COPY . .
 
 RUN yarn build
 
-WORKDIR /app
-
-COPY --from=build /app/dist ./dist
-
 EXPOSE 3000
 
 CMD ["serve", "dist"]
