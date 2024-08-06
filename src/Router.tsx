@@ -4,7 +4,8 @@ import SignDone from './pages/signUpDone';
 import LoginScreen from './pages/login';
 import Map from './pages/map';
 import OutLetContainer from './pages';
-import PostCreatePage from './pages/post';
+import PostCreatePage from './pages/makePost';
+import PostDetail from './pages/post';
 
 const Router = () => {
   return (
@@ -16,7 +17,8 @@ const Router = () => {
           <Route path="map" element={<Map />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signDone" element={<SignDone />} />
-          <Route path="/post" element={<PostCreatePage />} />
+          <Route path="/makePost" element={<PostCreatePage />} />
+          <Route path="/post" element={<PostDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
