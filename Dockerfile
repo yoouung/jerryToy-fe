@@ -10,6 +10,8 @@ COPY . .
 
 RUN yarn build
 
+RUN npm i -g serve
+
 EXPOSE 3000
 
 CMD ["serve", "dist"]
