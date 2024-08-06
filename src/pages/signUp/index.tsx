@@ -127,7 +127,7 @@ const SignUp: React.FC = () => {
       };
       console.log('Sending payload:', payload); // Debugging line
 
-      await axios.post(`${baseUrl}/api/users/register`, payload, {
+      await axios.post('/api/users/register', payload, {
         headers: {
           Credentials: 'include',
           'Content-Type': 'application/json',
