@@ -5,6 +5,7 @@ import Map from './pages/map';
 import OutLetContainer from './pages';
 import SignUpDone from './pages/signUpDone';
 import UserPage from './pages/user';
+import ChatBody from './components/chat/chatBody';
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/signUpDone" element={<SignUpDone />} />
           <Route path="/userInfo" element={<UserPage />} />
+          <Route path="/chatBody" element={<ChatBody />} />
         </Route>
       </Routes>
     </BrowserRouter>
