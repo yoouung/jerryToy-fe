@@ -35,6 +35,7 @@ const SignUp: React.FC = () => {
     mbti: {} as { [key: string]: string },
   });
   const navigate = useNavigate();
+  const baseUrl = new URL(window.location.href).origin;
 
   const handleNext = () => {
     if (step === steps.length - 1) {
@@ -126,7 +127,7 @@ const SignUp: React.FC = () => {
       };
       console.log('Sending payload:', payload); // Debugging line
 
-      await axios.post('/api/users/register', payload, {
+      await axios.post(`${baseUrl}/api/users/register`, payload, {
         headers: {
           Credentials: 'include',
           'Content-Type': 'application/json',
