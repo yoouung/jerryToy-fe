@@ -37,3 +37,12 @@ export const CategoryItem = styled.div`
     padding: 0;
   }
 `;
+
+export const FooterStyle = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+  margin-right: 20px;
+  color: #222222;
+`;

@@ -6,6 +6,7 @@ import { Drawer, CategoryList, DrawerHeader, CategoryItem } from './styles';
 import ListComponent from '../list';
 import { Tag } from '@/types';
 import { ButtonTagStyle } from '../floatTags/styles';
+import Footer from './footer';
 
 interface DrawerComponentProps {
   tagList: Tag[];
@@ -96,7 +97,9 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
           : renderTags(selectedTags)}
       </CategoryList>
       <Divider />
-      <ListComponent posts={posts} onPostClick={navigateToPost} />
+      <ListComponent posts={posts} />
+      <Divider />
+      <Footer />
     </div>
   );
 

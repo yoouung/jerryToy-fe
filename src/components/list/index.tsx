@@ -20,7 +20,7 @@ const ListComponent: React.FC<ListComponentProps> = ({
   onPostClick,
 }) => {
   return (
-    <List>
+    <List style={{ height: '510px', overflow: 'scroll' }}>
       {posts.map((post, index) => (
         <PostItem key={index} disablePadding>
           <PostTag>{post.tag}</PostTag>
