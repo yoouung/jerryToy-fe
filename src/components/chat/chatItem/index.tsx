@@ -11,6 +11,8 @@ interface ChatItemProps {
   user: string;
   msg: string;
   image: string;
+  timestamp: string;
+  status: string;
 }
 
 const ChatItem: React.FC<ChatItemProps> = ({
@@ -18,6 +20,8 @@ const ChatItem: React.FC<ChatItemProps> = ({
   user,
   msg,
   image,
+  timestamp,
+  status,
 }) => {
   return (
     <ChatItemContainer
@@ -27,8 +31,8 @@ const ChatItem: React.FC<ChatItemProps> = ({
       <ChatItemContent>
         <p>{msg}</p>
         <ChatItemMeta>
-          <span>16 mins ago</span>
-          <span>Seen 1.03PM</span>
+          <span>{timestamp}</span>
+          <span>{status}</span>
         </ChatItemMeta>
       </ChatItemContent>
       <AvatarContainer>

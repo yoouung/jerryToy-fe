@@ -51,6 +51,7 @@ export const Body = styled.div`
   overflow-y: auto;
   margin-top: 20px;
   margin-right: -20px;
+  margin-left: -20px;
 
   .chat__items {
     display: flex;
