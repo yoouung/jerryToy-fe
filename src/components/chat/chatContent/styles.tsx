@@ -38,12 +38,6 @@ export const Header = styled.div`
     margin: 0;
     font-weight: 600;
   }
-
-  .settings {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
 `;
 
 export const Body = styled.div`

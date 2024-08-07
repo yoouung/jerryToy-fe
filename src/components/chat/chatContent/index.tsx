@@ -10,6 +10,8 @@ import {
 } from './styles';
 import AddIcon from '@mui/icons-material/Add';
 import SendIcon from '@mui/icons-material/Send';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import { useNavigate } from 'react-router-dom';
 
 interface ChatItemType {
   key: number;
@@ -106,6 +108,7 @@ const ChatContent: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate();
   return (
     <ChatContentContainer>
       <Header>
@@ -116,9 +119,10 @@ const ChatContent: React.FC = () => {
           />
           <p>데릭</p>
         </div>
-        <button className="settings">
-          <i className="fa fa-cog"></i>
-        </button>
+        <ExitToAppOutlinedIcon
+          style={{ cursor: 'pointer', color: 'var(--logout-color)' }}
+          onClick={() => navigate('/map')}
+        />
       </Header>
       <Body>
         {chat.map((itm, index) => (
