@@ -55,7 +55,7 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
       );
       setPosts(filteredPosts);
     }
-  }, [destId]);
+  }, [destId, data]);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -81,7 +81,9 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
 
   useEffect(() => {
     if (selectedTags && selectedTags.length === 0) {
+      // 여기에 필요한 로직을 추가하세요
     } else if (selectedTags) {
+      // 여기에 필요한 로직을 추가하세요
     }
   }, [selectedTags]);
 
