@@ -86,8 +86,19 @@ const LoginScreen = () => {
         password: password,
       };
 
-      alert('로그인 성공하셨습니다.');
-      navigate('/map');
+      const currentUser = localStorage.getItem('user');
+      if (currentUser) {
+        const user = JSON.parse(currentUser);
+        if (
+          user.username === payload.username &&
+          user.password === payload.password
+        ) {
+          localStorage.setItem('token', 'token');
+          alert('로그인 성공하셨습니다.');
+          navigate('/map');
+          return;
+        }
+      }
     }
   };
 
