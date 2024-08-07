@@ -6,10 +6,10 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --error-color: #F00001;
     --default-border-color: #D1D1D1;
-    --focus-border-color: #ffde05;
-
-    --active-button-color: #ffde05;
-    --inactive-button-color: #f6de46;
+    --focus-border-color: #64a8ef;
+    
+    --active-button-color: #64a8ef;
+    --inactive-button-color: #9AC5F4;
   }
 
   html,

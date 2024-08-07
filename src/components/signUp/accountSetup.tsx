@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Typography, Box } from '@mui/material';
-import { Container } from './styles';
+import { Container, CustomTextField } from './styles';
 
 interface AccountSetupProps {
   onSelect: (data: {
@@ -49,14 +49,14 @@ const AccountSetup: React.FC<AccountSetupProps> = ({
     <Container>
       <Typography variant="h6">아이디와 비밀번호를 입력해주세요</Typography>
       <Box component="form" noValidate autoComplete="off">
-        <TextField
+        <CustomTextField
           label="아이디"
           value={username}
           onChange={handleUsernameChange}
           fullWidth
           margin="normal"
         />
-        <TextField
+        <CustomTextField
           label="비밀번호"
           type="password"
           value={password}
@@ -64,7 +64,7 @@ const AccountSetup: React.FC<AccountSetupProps> = ({
           fullWidth
           margin="normal"
         />
-        <TextField
+        <CustomTextField
           label="비밀번호 확인"
           type="password"
           value={confirmPassword}

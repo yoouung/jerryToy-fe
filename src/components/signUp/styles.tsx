@@ -1,15 +1,33 @@
 import styled from 'styled-components';
-import { Button, Box } from '@mui/material';
+import { Button, Box, TextField } from '@mui/material';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  width: 100%;
+  margin-top: 20px;
 `;
 
+export const CustomTextField = styled(TextField)({
+  height: '50px',
+
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'var(--active-button-color)',
+  },
+  '& .MuiOutlinedInput-root': {
+    '&.Mui-focused fieldset': {
+      borderColor: 'var(--active-button-color)',
+    },
+  },
+  '& .MuiFormLabel-root.Mui-focused': {
+    color: 'var(--active-button-color)',
+  },
+});
+
 export const SelectionButton = styled(Button)`
-  margin: 5px;
+  width: 160px;
+  margin: 10px;
 `;
 
 export const ButtonContainer = styled.div`
