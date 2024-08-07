@@ -6,23 +6,28 @@ import TagItem from './tag';
 
 interface FloatTagsProps {
   tagList: Tag[];
+  data: any;
 }
 
-const FloatTags: React.FC<FloatTagsProps> = ({ tagList }) => {
+const FloatTags: React.FC<FloatTagsProps> = ({ tagList, data }) => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
 
   const handleTagClick = (tag: Tag) => {
     setSelectedTags((prevSelectedTags) =>
       prevSelectedTags.includes(tag)
         ? prevSelectedTags.filter((t) => t !== tag)
-        : [...prevSelectedTags, tag],
+        : [...prevSelectedTags, tag]
     );
   };
 
   return (
     <>
       <FloatTagsContainer>
-        <DrawerComponent tagList={tagList} selectedTags={selectedTags} />
+        <DrawerComponent
+          tagList={tagList}
+          data={data}
+          selectedTags={selectedTags}
+        />
         {tagList.map((tag) => (
           <TagItem
             key={tag.name}

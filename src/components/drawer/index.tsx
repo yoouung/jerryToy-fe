@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Divider, IconButton } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -8,18 +8,51 @@ import ListComponent from '../list';
 import { Tag } from '@/types';
 import { ButtonTagStyle } from '../floatTags/styles';
 import Footer from './footer';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 interface DrawerComponentProps {
   tagList: Tag[];
-  selectedTags: Tag[];
+  selectedTags?: Tag[];
+  data: any;
+  isClicked?: boolean;
+  destId?: number;
+  onClose?: () => void;
 }
 
 const DrawerComponent: React.FC<DrawerComponentProps> = ({
   tagList,
   selectedTags,
+  data,
+  isClicked,
+  destId,
+  onClose,
 }) => {
+  const [posts, setPosts] = useState(data);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [tags, setTags] = useState(tagList);
+  const baseUrl = new URL(window.location.href).origin;
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
+
+  useEffect(() => {
+    if (isClicked) {
+      setDrawerOpen(isClicked);
+    }
+  }, [isClicked]);
+
+  useEffect(() => {
+    if (destId !== undefined) {
+      const filteredPosts = data.filter(
+        (post: any) => post.dest.destId === destId
+      );
+      setPosts(filteredPosts);
+    }
+  }, [destId]);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -31,44 +64,38 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
         return;
       }
       setDrawerOpen(open);
+      if (!open) {
+        if (onClose) {
+          onClose();
+        }
+      }
     };
 
   const handleRemoveCategory = (index: number, event: React.MouseEvent) => {
-    event.stopPropagation(); // 이벤트 전파를 막음
+    event.stopPropagation();
     setTags(tags.filter((_, i) => i !== index));
   };
 
-  const posts = [
-    {
-      tag: '교육',
-      title: '영어회화 학원을 다니고 싶은데',
-      subtitle: '기초부터 차근차근 잘 알려주는 학원 있을까요?',
-      location: '망우제3동',
-      time: '7분 전',
-    },
-    {
-      tag: '일반',
-      title: '동네에 친구가 없으니 너무 심심해요ㅠㅠ',
-      subtitle: '동네친구 하실분 있나요? 까페가서 수다떨거...',
-      location: '망우본동',
-      time: '6시간 전',
-      views: 122,
-    },
-    {
-      tag: '이벤트',
-      title: '찾아라! 투명한 페트병',
-      subtitle: '코카-콜라와 당근에서 준비한 선물을 드려요!',
-      location: '망우제3동',
-    },
-    {
-      tag: '자기계발',
-      title: '온라인셀러들의 친목방',
-      subtitle: '현재 온라인 판매하면서 혼자 헤쳐나가기가 ...',
-      location: '갈매동',
-      time: '6시간 전',
-      members: 6,
-    },
-  ];
+  useEffect(() => {
+    console.log(selectedTags);
+
+    if (selectedTags && selectedTags.length === 0) {
+      getAllPosts();
+    } else if (selectedTags) {
+      const tagNames = selectedTags.map((tag) => tag.name);
+      getPostsByTag(tagNames);
+    }
+  }, [selectedTags]);
+
+  const getAllPosts = async () => {
+    const { data } = await axios.get(`${baseUrl}/api/post/all`);
+    setPosts(data);
+  };
+
+  const getPostsByTag = async (tags: string[]) => {
+    const { data } = await axios.post(`${baseUrl}/api/post/all`, tags);
+    setPosts(data);
+  };
 
   const renderTags = (tagsToRender: Tag[]) =>
     tagsToRender.map((tag, index) => (
@@ -85,10 +112,6 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
       </CategoryItem>
     ));
 
-  const onClose = () => {
-    setDrawerOpen(false);
-  };
-
   const list = () => (
     <div
       role="presentation"
@@ -96,18 +119,19 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
       onKeyDown={toggleDrawer(false)}
     >
       <DrawerHeader>
-        망우제3동
+        🍊 제주행괌
         <div onClick={onClose}>
           <ChevronLeftIcon />
         </div>
       </DrawerHeader>
       <CategoryList>
-        {selectedTags.length === 0
-          ? renderTags(tags)
-          : renderTags(selectedTags)}
+        {selectedTags &&
+          (selectedTags.length === 0
+            ? renderTags(tags)
+            : renderTags(selectedTags))}
       </CategoryList>
       <Divider />
-      <ListComponent posts={posts} />
+      <ListComponent posts={posts} onPostClick={navigateToPost} />
       <Divider />
       <Footer />
     </div>
