@@ -22,6 +22,8 @@ const steps = [
   'MBTI\n선택',
 ];
 
+///////
+
 const SignUp: React.FC = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -127,6 +129,7 @@ const SignUp: React.FC = () => {
       console.log('Sending payload:', payload); // Debugging line
 
       localStorage.setItem('user', JSON.stringify(payload));
+
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
