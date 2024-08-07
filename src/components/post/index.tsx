@@ -37,9 +37,9 @@ const mockPost: Post = {
   postId: 1,
   user: {
     userId: 1,
-    nickname: '홍길동',
-    age: 25,
-    mbti: 'INTJ',
+    nickname: '토니',
+    age: 28,
+    mbti: 'INTP',
     gender: '남성',
     regDate: '2023-01-01',
     recent_match: '2023-02-01',
@@ -61,14 +61,15 @@ const mockPost: Post = {
   postDate: '2023-08-01',
   tag: '여행',
   likes: 20,
-  views: 100,
+  views: 5,
   people: 2,
 };
 
 const mockLikedUsers = [
-  { userId: 1, nickname: '유저1', mbti: 'INTJ', age: 25 },
-  { userId: 2, nickname: '유저2', mbti: 'ENTP', age: 22 },
-  { userId: 3, nickname: '유저3', mbti: 'INFJ', age: 30 },
+  { userId: 1, nickname: '릴리', mbti: 'INTJ', age: 24 },
+  { userId: 2, nickname: '데릭', mbti: 'ESFP', age: 28 },
+  { userId: 3, nickname: '제이미', mbti: 'ESFP', age: 25 },
+  { userId: 4, nickname: '제이드', mbti: 'INTJ', age: 26 },
 ];
 
 const PostDetail: React.FC = () => {
