@@ -8,9 +8,17 @@ export const Drawer = styled(MuiDrawer)`
 `;
 
 export const DrawerHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   padding: 16px;
   font-size: 18px;
   font-weight: bold;
+
+  div {
+    cursor: pointer;
+  }
 `;
 
 export const CategoryList = styled.div`
@@ -36,4 +44,13 @@ export const CategoryItem = styled.div`
   button {
     padding: 0;
   }
+`;
+
+export const FooterStyle = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 50px;
+  margin-right: 20px;
+  color: #222222;
 `;

@@ -1,21 +1,58 @@
-import React, { useState } from 'react';
-import { Button, Divider, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React, { useEffect, useState } from 'react';
+import { Divider, IconButton } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Drawer, CategoryList, DrawerHeader, CategoryItem } from './styles';
 import ListComponent from '../list';
+import { Tag } from '@/types';
+import { ButtonTagStyle } from '../floatTags/styles';
+import Footer from './footer';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const DrawerComponent: React.FC = () => {
+interface DrawerComponentProps {
+  tagList: Tag[];
+  selectedTags?: Tag[];
+  data: any;
+  isClicked?: boolean;
+  destId?: number;
+  onClose?: () => void;
+}
+
+const DrawerComponent: React.FC<DrawerComponentProps> = ({
+  tagList,
+  selectedTags,
+  data,
+  isClicked,
+  destId,
+  onClose,
+}) => {
+  const [posts, setPosts] = useState(data);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [categories, setCategories] = useState([
-    '인기글',
-    '맛집',
-    '병원/약국',
-    '생활/편의',
-    '교육',
-  ]);
+  const [tags, setTags] = useState(tagList);
+  const baseUrl = new URL(window.location.href).origin;
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setPosts(data);
+  }, [data]);
+
+  useEffect(() => {
+    if (isClicked) {
+      setDrawerOpen(isClicked);
+    }
+  }, [isClicked]);
+
+  useEffect(() => {
+    if (destId !== undefined) {
+      const filteredPosts = data.filter(
+        (post: any) => post.dest.destId === destId
+      );
+      setPosts(filteredPosts);
+    }
+  }, [destId]);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -27,44 +64,53 @@ const DrawerComponent: React.FC = () => {
         return;
       }
       setDrawerOpen(open);
+      if (!open) {
+        if (onClose) {
+          onClose();
+        }
+      }
     };
 
   const handleRemoveCategory = (index: number, event: React.MouseEvent) => {
-    event.stopPropagation(); // 이벤트 전파를 막음
-    setCategories(categories.filter((_, i) => i !== index));
+    event.stopPropagation();
+    setTags(tags.filter((_, i) => i !== index));
   };
 
-  const posts = [
-    {
-      tag: '교육',
-      title: '영어회화 학원을 다니고 싶은데',
-      subtitle: '기초부터 차근차근 잘 알려주는 학원 있을까요?',
-      location: '망우제3동',
-      time: '7분 전',
-    },
-    {
-      tag: '일반',
-      title: '동네에 친구가 없으니 너무 심심해요ㅠㅠ',
-      subtitle: '동네친구 하실분 있나요? 까페가서 수다떨거...',
-      location: '망우본동',
-      time: '6시간 전',
-      views: 122,
-    },
-    {
-      tag: '이벤트',
-      title: '찾아라! 투명한 페트병',
-      subtitle: '코카-콜라와 당근에서 준비한 선물을 드려요!',
-      location: '망우제3동',
-    },
-    {
-      tag: '자기계발',
-      title: '온라인셀러들의 친목방',
-      subtitle: '현재 온라인 판매하면서 혼자 헤쳐나가기가 ...',
-      location: '갈매동',
-      time: '6시간 전',
-      members: 6,
-    },
-  ];
+  useEffect(() => {
+    console.log(selectedTags);
+
+    if (selectedTags && selectedTags.length === 0) {
+      getAllPosts();
+    } else if (selectedTags) {
+      const tagNames = selectedTags.map((tag) => tag.name);
+      getPostsByTag(tagNames);
+    }
+  }, [selectedTags]);
+
+  const getAllPosts = async () => {
+    const { data } = await axios.get(`${baseUrl}/api/post/all`);
+    setPosts(data);
+  };
+
+  const getPostsByTag = async (tags: string[]) => {
+    const { data } = await axios.post(`${baseUrl}/api/post/all`, tags);
+    setPosts(data);
+  };
+
+  const renderTags = (tagsToRender: Tag[]) =>
+    tagsToRender.map((tag, index) => (
+      <CategoryItem key={tag.tag}>
+        <span>{tag.name}</span>
+        <IconButton
+          size="small"
+          edge="end"
+          aria-label="delete"
+          onClick={(event) => handleRemoveCategory(index, event)}
+        >
+          <ClearIcon fontSize="small" />
+        </IconButton>
+      </CategoryItem>
+    ));
 
   const list = () => (
     <div
@@ -72,24 +118,22 @@ const DrawerComponent: React.FC = () => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <DrawerHeader>망우제3동</DrawerHeader>
+      <DrawerHeader>
+        🍊 제주행괌
+        <div onClick={onClose}>
+          <ChevronLeftIcon />
+        </div>
+      </DrawerHeader>
       <CategoryList>
-        {categories.map((text, index) => (
-          <CategoryItem key={index}>
-            <span>{text}</span>
-            <IconButton
-              size="small"
-              edge="end"
-              aria-label="delete"
-              onClick={(event) => handleRemoveCategory(index, event)}
-            >
-              <ClearIcon fontSize="small" />
-            </IconButton>
-          </CategoryItem>
-        ))}
+        {selectedTags &&
+          (selectedTags.length === 0
+            ? renderTags(tags)
+            : renderTags(selectedTags))}
       </CategoryList>
       <Divider />
       <ListComponent posts={posts} onPostClick={navigateToPost} />
+      <Divider />
+      <Footer />
     </div>
   );
 
@@ -99,19 +143,13 @@ const DrawerComponent: React.FC = () => {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>
-        <MenuIcon />
-      </Button>
-      <Drawer
-        anchor="left"
-        open={drawerOpen}
-        onClose={toggleDrawer(false)}
-        BackdropProps={{
-          sx: {
-            backgroundColor: 'rgba(0, 0, 0, 0.08)', // 배경 오버레이 색상을 더 밝게 설정
-          },
-        }}
-      >
+      <ButtonTagStyle onClick={toggleDrawer(true)}>
+        <MenuIcon
+          style={{ width: '10px', height: '10px', marginRight: '3px' }}
+        />
+        조회
+      </ButtonTagStyle>
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         {list()}
       </Drawer>
     </div>

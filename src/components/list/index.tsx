@@ -3,11 +3,18 @@ import { List, ListItemButton, ListItemText } from '@mui/material';
 import { PostItem, PostTag, PostSubtitle, PostInfo } from './styles';
 
 interface Post {
-  tag: string;
+  postId: number;
   title: string;
-  subtitle: string;
+  content: string;
+  user: {
+    userId: number;
+    nickname: string;
+  };
+  dest: {
+    destName: string;
+    label: string;
+  };
   location: string;
-  time?: string;
 }
 
 interface ListComponentProps {
@@ -15,27 +22,47 @@ interface ListComponentProps {
   onPostClick: () => void;
 }
 
-const ListComponent: React.FC<ListComponentProps> = ({
-  posts,
-  onPostClick,
-}) => {
+const ListComponent: React.FC<ListComponentProps> = ({ posts }) => {
+  function onPostClick(): React.MouseEventHandler<HTMLDivElement> | undefined {
+    throw new Error('Function not implemented.');
+  }
+
   return (
-    <List>
-      {posts.map((post, index) => (
-        <PostItem key={index} disablePadding>
-          <PostTag>{post.tag}</PostTag>
+    <List
+      style={{
+        height: '510px',
+        overflow: 'scroll',
+      }}
+    >
+      {posts.map((post) => (
+        <PostItem
+          key={post.postId}
+          disablePadding
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'start',
+            margin: '5px 0',
+          }}
+        >
+          <PostTag>{post.dest.label}</PostTag>
           <ListItemButton
             disableRipple
             sx={{ '&:hover': { backgroundColor: 'transparent' } }}
-            onClick={onPostClick}
+            onClick={onPostClick()}
           >
             <ListItemText
               primary={post.title}
-              secondary={<PostSubtitle>{post.subtitle}</PostSubtitle>}
+              secondary={
+                <PostSubtitle>
+                  {post.content.substring(0, 20)}
+                  {post.content.length > 20 ? '...' : ''}
+                </PostSubtitle>
+              }
             />
           </ListItemButton>
           <PostInfo>
-            <span>{post.location}</span> <span>· {post.time}</span>
+            <span>{post.location}</span>
           </PostInfo>
         </PostItem>
       ))}
