@@ -114,7 +114,7 @@ const ChatContent: React.FC = () => {
             isOnline="active"
             image="https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE"
           />
-          <p>Tim Hover</p>
+          <p>데릭</p>
         </div>
         <button className="settings">
           <i className="fa fa-cog"></i>

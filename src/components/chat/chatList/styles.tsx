@@ -83,7 +83,7 @@ export const AvatarImage = styled.div`
   border-radius: 50%;
 
   img {
-    max-width: 100%;
+    max-width: 200%;
     object-fit: cover;
   }
 `;
