@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import Avatar from '../chatList/avatar';
 import ChatItem from '../chatItem';
 import {
@@ -27,59 +27,62 @@ const ChatContent: React.FC = () => {
   const [msg, setMsg] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const chatItems: ChatItemType[] = [
-    {
-      key: 1,
-      image:
-        'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
-      type: 'other',
-      msg: '같이 동행 해도 괜찮은가요??',
-      timestamp: '16 mins ago',
-      status: 'Seen 1.03PM',
-    },
-    {
-      key: 2,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
-      type: '',
-      msg: '저는 좋습니다!',
-      timestamp: '15 mins ago',
-      status: 'Seen 1.04PM',
-    },
-    {
-      key: 3,
-      image:
-        'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
-      type: 'other',
-      msg: '몇시까지 만날까요??',
-      timestamp: '14 mins ago',
-      status: 'Seen 1.05PM',
-    },
-    {
-      key: 4,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
-      type: '',
-      msg: '2시까지 봐요',
-      timestamp: '13 mins ago',
-      status: 'Seen 1.06PM',
-    },
-    {
-      key: 5,
-      image:
-        'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
-      type: 'other',
-      msg: '넵 그때뵈요',
-      timestamp: '14 mins ago',
-      status: 'Seen 1.05PM',
-    },
-    // ... add more chat items as needed
-  ];
+  const chatItems: ChatItemType[] = useMemo(
+    () => [
+      {
+        key: 1,
+        image:
+          'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
+        type: 'other',
+        msg: '같이 동행 해도 괜찮은가요??',
+        timestamp: '16 mins ago',
+        status: 'Seen 1.03PM',
+      },
+      {
+        key: 2,
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
+        type: '',
+        msg: '저는 좋습니다!',
+        timestamp: '15 mins ago',
+        status: 'Seen 1.04PM',
+      },
+      {
+        key: 3,
+        image:
+          'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
+        type: 'other',
+        msg: '몇시까지 만날까요??',
+        timestamp: '14 mins ago',
+        status: 'Seen 1.05PM',
+      },
+      {
+        key: 4,
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
+        type: '',
+        msg: '2시까지 봐요',
+        timestamp: '13 mins ago',
+        status: 'Seen 1.06PM',
+      },
+      {
+        key: 5,
+        image:
+          'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
+        type: 'other',
+        msg: '넵 그때뵈요',
+        timestamp: '14 mins ago',
+        status: 'Seen 1.05PM',
+      },
+      // ... add more chat items as needed
+    ],
+    []
+  );
 
   useEffect(() => {
     setChat(chatItems);
     scrollToBottom();
-  }, [setChat]);
+  }, [chatItems]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
