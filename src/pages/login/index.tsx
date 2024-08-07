@@ -29,6 +29,49 @@ const LoginScreen = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      alert('이미 로그인 되어있습니다');
+
+      return;
+    }
+
+    emailRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const emailValid = validateEmail(email);
+    const passwordValid = validatePassword(password);
+
+    setIsButtonActive(emailValid && passwordValid);
+  }, [email, password]);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid =
+      emailRegex.test(email) && email.length > 0 && email.length <= 50;
+    setEmailError(isValid ? '' : '이메일 형식이 올바르지 않습니다');
+    return isValid;
+  };
+
+  const validatePassword = (password: string) => {
+    let isValid = false;
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    if (password.length >= 8 && password.length <= 15) {
+      if (passwordRegex.test(password)) {
+        isValid = true;
+        setPasswordError('');
+      } else {
+        setPasswordError('비밀번호는 영문, 숫자, 특수문자를 포함해야 합니다');
+      }
+    } else {
+      setPasswordError('비밀번호는 8자리 이상 15자리 이하입니다');
+    }
+    return isValid;
+  };
+
   const handleEmailChange = ({ value }: { value: string }) => {
     setEmail(value);
   };
@@ -38,20 +81,19 @@ const LoginScreen = () => {
   };
 
   const handleLogin = () => {
-    // if (isButtonActive) {
-    //   try {
-    //     const payload = {
-    //       username: email,
-    //       password: password,
-    //     };
+    if (isButtonActive) {
+      try {
+        const payload = {
+          username: email,
+          password: password,
+        };
 
-    //     axios.post(window.location.hostname + '/api/login', payload);
-    //     navigate('/map');
-    //   } catch (error) {
-    //     console.error('로그인 오류', error);
-    //   }
-    // }
-    navigate('/map');
+        axios.post(window.location.hostname + '/api/login', payload);
+        navigate('/map');
+      } catch (error) {
+        console.error('로그인 오류', error);
+      }
+    }
   };
 
   const handleKeyDown = (
