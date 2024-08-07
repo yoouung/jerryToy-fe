@@ -127,16 +127,10 @@ const SignUp: React.FC = () => {
       };
       console.log('Sending payload:', payload); // Debugging line
 
-      await axios.post('/api/users/register', payload, {
-        headers: {
-          Credentials: 'include',
-          'Content-Type': 'application/json',
-        },
-      });
+      localStorage.setItem('user', JSON.stringify(payload));
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
-      // 오류 처리 로직 추가
     }
   };
 

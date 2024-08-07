@@ -1,21 +1,7 @@
 import React from 'react';
-import { List, ListItemButton, ListItemText } from '@mui/material';
-import { PostItem, PostTag, PostSubtitle, PostInfo } from './styles';
-
-interface Post {
-  postId: number;
-  title: string;
-  content: string;
-  user: {
-    userId: number;
-    nickname: string;
-  };
-  dest: {
-    destName: string;
-    label: string;
-  };
-  location: string;
-}
+import { List, ListItemButton } from '@mui/material';
+import { PostItem, PostTag } from './styles';
+import { Post } from '../post/types';
 
 interface ListComponentProps {
   posts: Post[];
@@ -26,6 +12,8 @@ const ListComponent: React.FC<ListComponentProps> = ({
   posts,
   onPostClick,
 }) => {
+  console.log(posts);
+
   return (
     <List
       style={{
@@ -50,19 +38,8 @@ const ListComponent: React.FC<ListComponentProps> = ({
             sx={{ '&:hover': { backgroundColor: 'transparent' } }}
             onClick={onPostClick}
           >
-            <ListItemText
-              primary={post.title}
-              secondary={
-                <PostSubtitle>
-                  {post.content.substring(0, 20)}
-                  {post.content.length > 20 ? '...' : ''}
-                </PostSubtitle>
-              }
-            />
+            {/* Other content */}
           </ListItemButton>
-          <PostInfo>
-            <span>{post.location}</span>
-          </PostInfo>
         </PostItem>
       ))}
     </List>

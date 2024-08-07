@@ -5,11 +5,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Drawer, CategoryList, DrawerHeader, CategoryItem } from './styles';
 import ListComponent from '../list';
-import { Tag } from '@/types';
+import { Tag } from '../../types';
 import { ButtonTagStyle } from '../floatTags/styles';
 import Footer from './footer';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import mockUpPosts from '../../mockupData/posts.json';
+import { Post } from '../post/types';
 
 interface DrawerComponentProps {
   tagList: Tag[];
@@ -28,7 +29,7 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
   destId,
   onClose,
 }) => {
-  const [posts, setPosts] = useState(data);
+  const [posts, setPosts] = useState<Post[]>(data);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [tags, setTags] = useState(tagList);
   const baseUrl = new URL(window.location.href).origin;
@@ -36,8 +37,10 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    setPosts(data);
-  }, [data]);
+    fetch('../../mockupData/posts.json')
+      .then((response) => response.json())
+      .then((jsonData) => setPosts(jsonData));
+  }, []);
 
   useEffect(() => {
     if (isClicked) {
@@ -77,25 +80,11 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
   };
 
   useEffect(() => {
-    console.log(selectedTags);
-
     if (selectedTags && selectedTags.length === 0) {
-      // getAllPosts();
+      setPosts(data);
     } else if (selectedTags) {
-      const tagNames = selectedTags.map((tag) => tag.name);
-      // getPostsByTag(tagNames);
     }
   }, [selectedTags]);
-
-  // const getAllPosts = async () => {
-  //   const { data } = await axios.get(`${baseUrl}/api/post/all`);
-  //   setPosts(data);
-  // };
-
-  // const getPostsByTag = async (tags: string[]) => {
-  //   const { data } = await axios.post(`${baseUrl}/api/post/all`, tags);
-  //   setPosts(data);
-  // };
 
   const renderTags = (tagsToRender: Tag[]) =>
     tagsToRender.map((tag, index) => (
@@ -131,7 +120,10 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
             : renderTags(selectedTags))}
       </CategoryList>
       <Divider />
-      <ListComponent posts={posts} onPostClick={() => navigate('/post')} />
+      <ListComponent
+        posts={mockUpPosts as Post[]}
+        onPostClick={() => navigate('/post')}
+      />
       <Divider />
       <Footer />
     </div>

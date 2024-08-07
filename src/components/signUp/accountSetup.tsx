@@ -47,10 +47,10 @@ const AccountSetup: React.FC<AccountSetupProps> = ({
 
   return (
     <Container>
-      <Typography variant="h6">아이디와 비밀번호를 입력해주세요</Typography>
+      <Typography variant="h6">이메일과 비밀번호를 입력해주세요</Typography>
       <Box component="form" noValidate autoComplete="off">
         <CustomTextField
-          label="아이디"
+          label="이메일"
           value={username}
           onChange={handleUsernameChange}
           fullWidth

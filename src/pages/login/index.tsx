@@ -82,17 +82,13 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     if (isButtonActive) {
-      try {
-        const payload = {
-          username: email,
-          password: password,
-        };
+      const payload = {
+        username: email,
+        password: password,
+      };
 
-        axios.post('/api/login', payload);
-        navigate('/map');
-      } catch (error) {
-        console.error('로그인 오류', error);
-      }
+      alert('로그인 성공하셨습니다.');
+      navigate('/map');
     }
   };
 
