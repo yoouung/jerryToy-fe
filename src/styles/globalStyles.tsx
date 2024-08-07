@@ -10,6 +10,8 @@ const GlobalStyles = createGlobalStyle`
     
     --active-button-color: #64a8ef;
     --inactive-button-color: #9AC5F4;
+    --logout-color: #959595;
+
   }
 
   html,

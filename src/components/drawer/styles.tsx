@@ -50,7 +50,8 @@ export const CategoryItem = styled.div`
 
 export const FooterStyle = styled.div`
   display: flex;
-  justify-content: end;
+  padding: 0 10px;
+  justify-content: space-between;
   align-items: center;
   height: 50px;
   margin-right: 20px;
