@@ -3,7 +3,7 @@
     "postId": 1,
     "user": {
       "userId": 1,
-      "nickname": "John",
+      "nickname": "Derek",
       "age": 25,
       "mbti": "INTJ",
       "gender": "M",
@@ -35,7 +35,7 @@
     "postId": 2,
     "user": {
       "userId": 2,
-      "nickname": "Doe",
+      "nickname": "Lily",
       "age": 30,
       "mbti": "ENFP",
       "gender": "F",
@@ -67,7 +67,7 @@
     "postId": 3,
     "user": {
       "userId": 3,
-      "nickname": "Alice",
+      "nickname": "Jamie",
       "age": 28,
       "mbti": "ISFJ",
       "gender": "F",
@@ -99,7 +99,7 @@
     "postId": 4,
     "user": {
       "userId": 4,
-      "nickname": "Bob",
+      "nickname": "Jade",
       "age": 32,
       "mbti": "ENTP",
       "gender": "M",
@@ -131,7 +131,7 @@
     "postId": 5,
     "user": {
       "userId": 5,
-      "nickname": "Charlie",
+      "nickname": "Tony",
       "age": 27,
       "mbti": "INFJ",
       "gender": "M",

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import AccountSetup from '../../components/signUp/accountSetup';
 import NicknameSetting from '../../components/signUp/nicknameSetting';
 import GenderSelection from '../../components/signUp/genderSelection';

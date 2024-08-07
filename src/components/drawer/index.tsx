@@ -81,7 +81,6 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
 
   useEffect(() => {
     if (selectedTags && selectedTags.length === 0) {
-      setPosts(data);
     } else if (selectedTags) {
     }
   }, [selectedTags]);

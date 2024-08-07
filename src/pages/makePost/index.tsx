@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import {
   Container,
   TextField,
@@ -12,7 +11,8 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { Tag } from '@/types';
+import { Tag } from '../../types';
+import mockUpDestinations from '../../mockupData/destinations.json';
 
 const tags: Tag[] = [
   { tag: '숙박', name: '숙박' },
@@ -28,23 +28,13 @@ const PostCreatePage: React.FC = () => {
   const [destName, setDestName] = useState('');
   const [label, setLabel] = useState('');
   const [content, setContent] = useState('');
-  const [locations, setLocations] = useState<any[]>([]);
+  const [locations, setLocations] = useState(mockUpDestinations);
 
   useEffect(() => {
-    if (label) {
-      const baseUrl = new URL(window.location.href).origin;
-      axios
-        .get(`${baseUrl}/api/dest/${label}`)
-        .then((response) => {
-          setLocations(response.data.list);
-        })
-        .catch((error) => {
-          console.error('위치 정보 가져오기 오류:', error);
-        });
-    } else {
-      setLocations([]);
-    }
-  }, [label]);
+    fetch('../../mockupData/destinations.json')
+      .then((response) => response.json())
+      .then((jsonData) => setLocations(jsonData));
+  }, []);
 
   const handleSelectLocation = (place: any) => {
     setDestName(place.destName);
@@ -58,13 +48,9 @@ const PostCreatePage: React.FC = () => {
         destName,
         tagList: [label],
       };
-      const baseUrl = new URL(window.location.href).origin;
-      const response = await axios.post(`${baseUrl}/api/post/submit`, payload, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log('게시글 작성 완료:', response.data);
+
+      localStorage.setItem('post', JSON.stringify(payload));
+      console.log('게시글 작성 완료:', localStorage.getItem('post'));
     } catch (error) {
       console.error('게시글 작성 오류:', error);
     }
@@ -103,7 +89,7 @@ const PostCreatePage: React.FC = () => {
           value={destName}
           onChange={(e) => {
             const selectedPlace = locations.find(
-              (location) => location.destName === e.target.value
+              (location) => location.dest_name === e.target.value
             );
             if (selectedPlace) {
               handleSelectLocation(selectedPlace);
@@ -112,8 +98,8 @@ const PostCreatePage: React.FC = () => {
           disabled={!label}
         >
           {locations.map((location) => (
-            <MenuItem key={location.destId} value={location.destName}>
-              {location.destName}
+            <MenuItem key={location.dest_id} value={location.dest_name}>
+              {location.dest_name}
             </MenuItem>
           ))}
         </Select>

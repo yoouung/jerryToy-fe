@@ -36,13 +36,15 @@ export const CategoryItem = styled.div`
   padding: 5px 10px;
   margin: 5px;
   white-space: nowrap;
+  font-size: 10px;
 
   span {
     margin-right: 8px;
   }
 
   button {
-    padding: 0;
+    padding: 0 5px;
+    width: 8px;
   }
 `;
 

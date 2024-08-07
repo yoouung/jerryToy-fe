@@ -13,7 +13,6 @@ import {
 import { TitleStyle } from '../../components/title/styles';
 import LineText from '../../components/lineText';
 import { SubmitBtn } from '../../components/submitBtn';
-import axios from 'axios';
 
 // TODO: logo 설정
 import cover from '../../assets/cover.png';

@@ -25,10 +25,18 @@ export const PostSubtitle = styled.div`
   color: rgba(0, 0, 0, 0.6);
 `;
 
+export const PostWriter = styled.div`
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+`;
+
 export const PostInfo = styled.div`
   font-size: 12px;
   color: rgba(0, 0, 0, 0.4);
   display: flex;
   gap: 5px;
   margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 16px;
 `;
