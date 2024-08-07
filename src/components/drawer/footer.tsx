@@ -6,7 +6,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <FooterStyle>
-      <div onClick={() => navigate('/post/new')}>
+      <div onClick={() => navigate('/makePost')}>
         <DriveFileRenameOutlineOutlinedIcon />
       </div>
     </FooterStyle>
