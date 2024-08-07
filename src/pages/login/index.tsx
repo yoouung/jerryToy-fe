@@ -13,7 +13,6 @@ import {
 import { TitleStyle } from '../../components/title/styles';
 import LineText from '../../components/lineText';
 import { SubmitBtn } from '../../components/submitBtn';
-import axios from 'axios';
 
 // TODO: logo 설정
 import cover from '../../assets/cover.png';
@@ -23,7 +22,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isButtonActive, setIsButtonActive] = useState(true);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -82,16 +81,23 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     if (isButtonActive) {
-      try {
-        const payload = {
-          username: email,
-          password: password,
-        };
+      const payload = {
+        username: email,
+        password: password,
+      };
 
-        axios.post(window.location.hostname + '/api/login', payload);
-        navigate('/map');
-      } catch (error) {
-        console.error('로그인 오류', error);
+      const currentUser = localStorage.getItem('user');
+      if (currentUser) {
+        const user = JSON.parse(currentUser);
+        if (
+          user.username === payload.username &&
+          user.password === payload.password
+        ) {
+          localStorage.setItem('token', 'token');
+          alert('로그인 성공하셨습니다.');
+          navigate('/map');
+          return;
+        }
       }
     }
   };

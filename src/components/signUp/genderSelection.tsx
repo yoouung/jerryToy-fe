@@ -24,7 +24,14 @@ const GenderSelection: React.FC<GenderSelectionProps> = ({
   return (
     <Container>
       <Typography variant="h6">회원님의 성별을 선택해주세요</Typography>
-      <Box>
+      <Box
+        style={{
+          display: 'flex',
+          width: '100%',
+          justifyContent: 'space-between',
+          marginTop: '20px',
+        }}
+      >
         <SelectionButton
           variant={gender === '남성' ? 'contained' : 'outlined'}
           onClick={() => handleSelect('남성')}

@@ -8,7 +8,7 @@ export const SubmitBtnStyle = styled.button<{
   height: 40px;
   box-sizing: border-box;
   border-radius: 5px;
-  color: #fefefe;
+  color: #222222;
   border: none;
   background-color: ${({ isActive }) =>
     isActive ? 'var(--active-button-color)' : 'var(--inactive-button-color)'};

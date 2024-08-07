@@ -10,12 +10,16 @@ import {
 } from './styles';
 import AddIcon from '@mui/icons-material/Add';
 import SendIcon from '@mui/icons-material/Send';
+import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
+import { useNavigate } from 'react-router-dom';
 
 interface ChatItemType {
   key: number;
   image: string;
   type: string;
   msg: string;
+  timestamp: string;
+  status: string;
 }
 
 const ChatContent: React.FC = () => {
@@ -27,11 +31,49 @@ const ChatContent: React.FC = () => {
     {
       key: 1,
       image:
+        'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
+      type: 'other',
+      msg: '같이 동행 해도 괜찮은가요??',
+      timestamp: '16 mins ago',
+      status: 'Seen 1.03PM',
+    },
+    {
+      key: 2,
+      image:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
       type: '',
-      msg: 'Hi Tim, How are you?',
+      msg: '저는 좋습니다!',
+      timestamp: '15 mins ago',
+      status: 'Seen 1.04PM',
     },
-    // ... 더 많은 채팅 아이템들
+    {
+      key: 3,
+      image:
+        'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
+      type: 'other',
+      msg: '몇시까지 만날까요??',
+      timestamp: '14 mins ago',
+      status: 'Seen 1.05PM',
+    },
+    {
+      key: 4,
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
+      type: '',
+      msg: '2시까지 봐요',
+      timestamp: '13 mins ago',
+      status: 'Seen 1.06PM',
+    },
+    {
+      key: 5,
+      image:
+        'https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE',
+      type: 'other',
+      msg: '넵 그때뵈요',
+      timestamp: '14 mins ago',
+      status: 'Seen 1.05PM',
+    },
+    // ... add more chat items as needed
   ];
 
   useEffect(() => {
@@ -57,6 +99,8 @@ const ChatContent: React.FC = () => {
           msg: msg,
           image:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU',
+          timestamp: 'Just now',
+          status: 'Seen',
         },
       ]);
       setMsg('');
@@ -64,19 +108,21 @@ const ChatContent: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate();
   return (
     <ChatContentContainer>
       <Header>
         <div className="current-chatting-user">
           <Avatar
             isOnline="active"
-            image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTA78Na63ws7B7EAWYgTr9BxhX_Z8oLa1nvOA&usqp=CAU"
+            image="https://fastly.picsum.photos/id/190/600/307.jpg?hmac=r0veQERxZ62nh_Xw1etsktlrSqUnMMQRSLB7R9zVGaE"
           />
-          <p>Tim Hover</p>
+          <p>데릭</p>
         </div>
-        <button className="settings">
-          <i className="fa fa-cog"></i>
-        </button>
+        <ExitToAppOutlinedIcon
+          style={{ cursor: 'pointer', color: 'var(--logout-color)' }}
+          onClick={() => navigate('/map')}
+        />
       </Header>
       <Body>
         {chat.map((itm, index) => (
@@ -86,6 +132,8 @@ const ChatContent: React.FC = () => {
             user={itm.type ? itm.type : 'me'}
             msg={itm.msg}
             image={itm.image}
+            timestamp={itm.timestamp}
+            status={itm.status}
           />
         ))}
         <div ref={messagesEndRef} />

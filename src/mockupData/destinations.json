@@ -1,0 +1,514 @@
+[
+  {
+    "dest_id": 240,
+    "dest_name": "캣츠앤독스",
+    "label": "관광지",
+    "latitude": 33.248925,
+    "longitude": 126.5708639,
+    "address": "제주특별자치도 서귀포시 동홍동 382-1"
+  },
+  {
+    "dest_id": 294,
+    "dest_name": "육시우영",
+    "label": "관광지",
+    "latitude": 33.45789,
+    "longitude": 126.35208,
+    "address": "제주특별자치도 제주시 애월읍 하가리"
+  },
+  {
+    "dest_id": 385,
+    "dest_name": "제주일상식탁",
+    "label": "관광지",
+    "latitude": 33.302706,
+    "longitude": 126.6568975,
+    "address": "제주특별자치도 서귀포시 남원읍 위미리 49-14"
+  },
+  {
+    "dest_id": 425,
+    "dest_name": "나드 보컬 스튜디오",
+    "label": "관광지",
+    "latitude": 33.4987647,
+    "longitude": 126.5301679,
+    "address": "제주특별자치도 제주시 이도이동 1768-22"
+  },
+  {
+    "dest_id": 451,
+    "dest_name": "추억애거리",
+    "label": "관광지",
+    "latitude": 33.505996,
+    "longitude": 126.4657678,
+    "address": "제주특별자치도 제주시 도두1동 2630-1"
+  },
+  {
+    "dest_id": 466,
+    "dest_name": "유캔들잇스튜디오",
+    "label": "관광지",
+    "latitude": 33.498108,
+    "longitude": 126.5401507,
+    "address": "제주특별자치도 제주시 이도이동 396-7"
+  },
+  {
+    "dest_id": 474,
+    "dest_name": "마오름(한경)",
+    "label": "관광지",
+    "latitude": 33.33803,
+    "longitude": 126.24381,
+    "address": "제주특별자치도 제주시 한경면 저지리 산 56"
+  },
+  {
+    "dest_id": 477,
+    "dest_name": "펫플러스",
+    "label": "관광지",
+    "latitude": 33.4876493,
+    "longitude": 126.4895315,
+    "address": "제주특별자치도 제주시 연동 262-4"
+  },
+  {
+    "dest_id": 479,
+    "dest_name": "렛츠런팜 양귀비꽃",
+    "label": "관광지",
+    "latitude": 33.41699,
+    "longitude": 126.681465,
+    "address": "제주특별자치도 제주시 조천읍 남조로 1660"
+  },
+  {
+    "dest_id": 501,
+    "dest_name": "제라펫",
+    "label": "관광지",
+    "latitude": 33.5078807,
+    "longitude": 126.5134968,
+    "address": "제주특별자치도 제주시 용담일동 246-28"
+  },
+  {
+    "dest_id": 524,
+    "dest_name": "우도 봉수대",
+    "label": "관광지",
+    "latitude": 33.524593,
+    "longitude": 126.952644,
+    "address": "제주특별자치도 제주시 우도면 연평리 798"
+  },
+  {
+    "dest_id": 543,
+    "dest_name": "문화공간 양",
+    "label": "관광지",
+    "latitude": 33.5092497,
+    "longitude": 126.5618739,
+    "address": "제주특별자치도 제주시 화북2동 3486-1"
+  },
+  {
+    "dest_id": 544,
+    "dest_name": "서귀포농업기술센터 제주농업생태원",
+    "label": "관광지",
+    "latitude": 33.28809500000001,
+    "longitude": 126.60703,
+    "address": "제주특별자치도 서귀포시 남원읍 하례리 1558"
+  },
+  {
+    "dest_id": 547,
+    "dest_name": "별도연대",
+    "label": "관광지",
+    "latitude": 33.526237,
+    "longitude": 126.56813,
+    "address": "제주특별자치도 제주시 화북1동 1537"
+  },
+  {
+    "dest_id": 548,
+    "dest_name": "마라도기원정사",
+    "label": "관광지",
+    "latitude": 33.115997,
+    "longitude": 126.26655,
+    "address": "제주특별자치도 서귀포시 대정읍 가파리 736"
+  },
+  {
+    "dest_id": 549,
+    "dest_name": "베콩스",
+    "label": "관광지",
+    "latitude": 33.5435402,
+    "longitude": 126.661653,
+    "address": "제주특별자치도 제주시 조천읍 함덕리 1045"
+  },
+  {
+    "dest_id": 561,
+    "dest_name": "토종닭유통특구교래삼다수마을",
+    "label": "관광지",
+    "latitude": 33.427616,
+    "longitude": 126.66658,
+    "address": "제주특별자치도 제주시 조천읍 교래리"
+  },
+  {
+    "dest_id": 562,
+    "dest_name": "가야금이 흐르는 제주",
+    "label": "관광지",
+    "latitude": 33.5008664,
+    "longitude": 126.5326422,
+    "address": "제주특별자치도 제주시 이도이동 1175-5"
+  },
+  {
+    "dest_id": 583,
+    "dest_name": "디어펫",
+    "label": "관광지",
+    "latitude": 33.4764981,
+    "longitude": 126.4883789,
+    "address": "제주특별자치도 제주시 연동 1531-7"
+  },
+  {
+    "dest_id": 592,
+    "dest_name": " 주정공장수용소 4.3역사관",
+    "label": "관광지",
+    "latitude": 33.51911,
+    "longitude": 126.5345,
+    "address": "제주특별자치도 제주시 건입동 918-32 일대"
+  },
+  {
+    "dest_id": 597,
+    "dest_name": "파군봉(바굼지오름)",
+    "label": "관광지",
+    "latitude": 33.479167462316795,
+    "longitude": 126.41244381772154,
+    "address": "제주특별자치도 제주시 애월읍 하귀1리 688-1"
+  },
+  {
+    "dest_id": 599,
+    "dest_name": "일출랜드 아트센터",
+    "label": "관광지",
+    "latitude": 33.3833933,
+    "longitude": 126.84245,
+    "address": "제주특별자치도 서귀포시 성산읍 삼달리 1010"
+  },
+  {
+    "dest_id": 607,
+    "dest_name": "댕금님표수제간식",
+    "label": "관광지",
+    "latitude": 33.4708407,
+    "longitude": 126.5499047,
+    "address": "제주특별자치도 제주시 아라일동 6152-7"
+  },
+  {
+    "dest_id": 621,
+    "dest_name": "이미지호 제주점",
+    "label": "관광지",
+    "latitude": 33.5124131,
+    "longitude": 126.5186206,
+    "address": "제주특별자치도 제주시 용담일동 114 3층 "
+  },
+  {
+    "dest_id": 632,
+    "dest_name": "에버리스 골프리조트",
+    "label": "관광지",
+    "latitude": 33.37819,
+    "longitude": 126.36217,
+    "address": "제주특별자치도 제주시 애월읍 평화로 1693-75"
+  },
+  {
+    "dest_id": 635,
+    "dest_name": "천주교 순례길 - 신축화해길",
+    "label": "관광지",
+    "latitude": 33.51162,
+    "longitude": 126.523155,
+    "address": "제주특별자치도 제주시 삼도2동 114"
+  },
+  {
+    "dest_id": 652,
+    "dest_name": "해피애견놀이방",
+    "label": "관광지",
+    "latitude": 33.498056,
+    "longitude": 126.5079461,
+    "address": "제주특별자치도 제주시 오라삼동 2238-5"
+  },
+  {
+    "dest_id": 653,
+    "dest_name": "불탑사 (5층석탑)",
+    "label": "관광지",
+    "latitude": 33.5291414,
+    "longitude": 126.5979893,
+    "address": "제주특별자치도 제주시 삼양일동 697"
+  },
+  {
+    "dest_id": 1315,
+    "dest_name": "한남의숙터",
+    "label": "관광지",
+    "latitude": 33.251087,
+    "longitude": 126.27711,
+    "address": "제주특별자치도 서귀포시 대정읍 추사로"
+  },
+  {
+    "dest_id": 1321,
+    "dest_name": "캘리그라피 오월",
+    "label": "관광지",
+    "latitude": 33.487987,
+    "longitude": 126.517789,
+    "address": "제주특별자치도 제주시 오라2동 959-1"
+  },
+  {
+    "dest_id": 1941,
+    "dest_name": "선족이오름(알선족이)",
+    "label": "관광지",
+    "latitude": 33.44329,
+    "longitude": 126.75144,
+    "address": "제주특별자치도 제주시 구좌읍 송당리 산 140-2"
+  },
+  {
+    "dest_id": 2427,
+    "dest_name": "제주스쿠터여행",
+    "label": "관광지",
+    "latitude": 33.49984,
+    "longitude": 126.51392,
+    "address": "제주시 서광로 164"
+  },
+  {
+    "dest_id": 2428,
+    "dest_name": "관음사 템플스테이",
+    "label": "관광지",
+    "latitude": 33.42172,
+    "longitude": 126.558815,
+    "address": "제주시 산록북로 660"
+  },
+  {
+    "dest_id": 2453,
+    "dest_name": "산방산 수국",
+    "label": "관광지",
+    "latitude": 33.238625,
+    "longitude": 126.31461,
+    "address": "제주특별자치도 서귀포시 안덕면 산방로"
+  },
+  {
+    "dest_id": 2473,
+    "dest_name": "천아숲길 천아계곡",
+    "label": "관광지",
+    "latitude": 33.355183,
+    "longitude": 126.4252,
+    "address": "제주특별자치도 제주시 애월읍 봉성리 산 1"
+  },
+  {
+    "dest_id": 2474,
+    "dest_name": "피규어뮤지엄 제주",
+    "label": "관광지",
+    "latitude": 33.2819208,
+    "longitude": 126.35554720000005,
+    "address": "제주특별자치도 서귀포시 안덕면 상창리 1875-8"
+  },
+  {
+    "dest_id": 2475,
+    "dest_name": "바이나흐튼 크리스마스 박물관",
+    "label": "관광지",
+    "latitude": 33.308956,
+    "longitude": 126.3279,
+    "address": "제주특별자치도 서귀포시 안덕면 안덕면 서광리 456"
+  },
+  {
+    "dest_id": 2481,
+    "dest_name": "곤흘동(곤을동) 마을터",
+    "label": "관광지",
+    "latitude": 33.521984,
+    "longitude": 126.55739,
+    "address": "제주특별자치도 제주시 화북1동 4438"
+  },
+  {
+    "dest_id": 2482,
+    "dest_name": "북촌국민학교",
+    "label": "관광지",
+    "latitude": 33.547977,
+    "longitude": 126.69154,
+    "address": "제주특별자치도 제주시 조천읍 북촌리 1212"
+  },
+  {
+    "dest_id": 2483,
+    "dest_name": "터진목 & 성산면 4·3희생자 위령비",
+    "label": "관광지",
+    "latitude": 33.450108,
+    "longitude": 126.922455,
+    "address": "제주특별자치도 서귀포시 성산읍 고성리 224-1"
+  },
+  {
+    "dest_id": 2484,
+    "dest_name": "목시물굴",
+    "label": "관광지",
+    "latitude": 33.51025,
+    "longitude": 126.722336,
+    "address": "제주특별자치도 제주시 조천읍 선흘리 산26번지 일대"
+  },
+  {
+    "dest_id": 2485,
+    "dest_name": "큰넓궤",
+    "label": "관광지",
+    "latitude": 33.31075,
+    "longitude": 126.357635,
+    "address": "제주특별자치도 서귀포시 안덕면 동광리 90 일대"
+  },
+  {
+    "dest_id": 2496,
+    "dest_name": "중엄리새물",
+    "label": "관광지",
+    "latitude": 33.4654193,
+    "longitude": 126.3169526,
+    "address": "제주특별자치도 제주시 애월읍 애월리 2059-5"
+  },
+  {
+    "dest_id": 2498,
+    "dest_name": "해녀의 태왁",
+    "label": "관광지",
+    "latitude": 33.5582139,
+    "longitude": 126.7373381,
+    "address": "제주특별자치도 제주시 구좌읍 김녕리 904-4"
+  },
+  {
+    "dest_id": 2499,
+    "dest_name": "애월 하물",
+    "label": "관광지",
+    "latitude": 33.464873,
+    "longitude": 126.3206795,
+    "address": "제주특별자치도 제주시 애월읍 애월리 1727-4"
+  },
+  {
+    "dest_id": 2500,
+    "dest_name": "망장포",
+    "label": "관광지",
+    "latitude": 33.3420367,
+    "longitude": 126.5884214,
+    "address": "제주특별자치도 서귀포시 남원읍 하례리 64-10"
+  },
+  {
+    "dest_id": 2505,
+    "dest_name": "소라의성",
+    "label": "관광지",
+    "latitude": 33.2663197,
+    "longitude": 126.5671727,
+    "address": "제주특별자치도 서귀포시 동홍동 234-8"
+  },
+  {
+    "dest_id": 2519,
+    "dest_name": "수목원테마공원(야시장길&LED공원)",
+    "label": "관광지",
+    "latitude": 33.4701135,
+    "longitude": 126.4875915,
+    "address": "제주특별자치도 제주시 연동 1320"
+  },
+  {
+    "dest_id": 2523,
+    "dest_name": "제주고산리유적",
+    "label": "관광지",
+    "latitude": 33.30418,
+    "longitude": 126.166345,
+    "address": "제주특별자치도 제주시 한경면 고산리 3650-1"
+  },
+  {
+    "dest_id": 2526,
+    "dest_name": "이음새 농장",
+    "label": "관광지",
+    "latitude": 33.275292,
+    "longitude": 126.6686352,
+    "address": "제주특별자치도 서귀포시 남원읍 위미리 4137-1"
+  },
+  {
+    "dest_id": 2528,
+    "dest_name": "마라도 섬투어",
+    "label": "관광지",
+    "latitude": 33.1700179,
+    "longitude": 126.271518,
+    "address": "제주특별자치도 서귀포시 대정읍 가파리 701"
+  },
+  {
+    "dest_id": 2561,
+    "dest_name": "감귤박물관 감귤따기 체험",
+    "label": "관광지",
+    "latitude": 33.27127979999999,
+    "longitude": 126.6076749,
+    "address": "제주특별자치도 서귀포시 신효동 1200-6"
+  },
+  {
+    "dest_id": 2566,
+    "dest_name": "답다니수국밭",
+    "label": "관광지",
+    "latitude": 33.2437573,
+    "longitude": 126.4645228,
+    "address": "제주특별자치도 서귀포시 월평동 151-1"
+  },
+  {
+    "dest_id": 2572,
+    "dest_name": "산방산유람선",
+    "label": "관광지",
+    "latitude": 33.236904,
+    "longitude": 126.33513,
+    "address": "제주특별자치도 서귀포시 안덕면 화순리 636-15"
+  },
+  {
+    "dest_id": 2573,
+    "dest_name": "5.16도로숲터널",
+    "label": "관광지",
+    "latitude": 33.36869,
+    "longitude": 126.62519,
+    "address": "제주특별자치도 서귀포시 남원읍 신례리 산 2-1"
+  },
+  {
+    "dest_id": 2574,
+    "dest_name": "높은오름",
+    "label": "관광지",
+    "latitude": 33.45761407222886,
+    "longitude": 126.79309050654297,
+    "address": "제주특별자치도 제주시 구좌읍 송당리 산 213-1"
+  },
+  {
+    "dest_id": 2575,
+    "dest_name": "당오름(한경면)",
+    "label": "관광지",
+    "latitude": 33.308254,
+    "longitude": 126.17365,
+    "address": "제주특별자치도 제주시 한경면 용수리 산 18"
+  },
+  {
+    "dest_id": 2576,
+    "dest_name": "대정향교",
+    "label": "관광지",
+    "latitude": 33.23958,
+    "longitude": 126.2884,
+    "address": "제주특별자치도 서귀포시 안덕면 사계리 3126-1"
+  },
+  {
+    "dest_id": 2577,
+    "dest_name": "둔지봉",
+    "label": "관광지",
+    "latitude": 33.50136,
+    "longitude": 126.79464,
+    "address": "제주특별자치도 제주시 구좌읍 한동리 산 40"
+  },
+  {
+    "dest_id": 2578,
+    "dest_name": "라온승마클럽",
+    "label": "관광지",
+    "latitude": 33.355453,
+    "longitude": 126.2419,
+    "address": "제주특별자치도 제주시 한림읍 월림7길 155"
+  },
+  {
+    "dest_id": 2579,
+    "dest_name": "마복이오름",
+    "label": "관광지",
+    "latitude": 33.31936889858197,
+    "longitude": 126.39236368786618,
+    "address": "제주특별자치도 서귀포시 안덕면 상천리 산 83"
+  },
+  {
+    "dest_id": 2580,
+    "dest_name": "모구리오름",
+    "label": "관광지",
+    "latitude": 33.4059591,
+    "longitude": 126.821694,
+    "address": "제주특별자치도 서귀포시 성산읍 난산리 2971"
+  },
+  {
+    "dest_id": 2581,
+    "dest_name": "모지오름",
+    "label": "관광지",
+    "latitude": 33.393745,
+    "longitude": 126.76842,
+    "address": "제주특별자치도 서귀포시 표선면 성읍리 산 22"
+  },
+  {
+    "dest_id": 2582,
+    "dest_name": "묘산봉 (괴살메)",
+    "label": "관광지",
+    "latitude": 33.542805,
+    "longitude": 126.744316,
+    "address": "제주특별자치도 제주시 구좌읍 김녕리 2723"
+  }
+]

@@ -6,7 +6,7 @@ export const Container = styled(Box)`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 390px;
+  width: 330px;
   height: 100vh;
   margin: 0 auto;
   padding-top: 32px;
@@ -15,6 +15,7 @@ export const Container = styled(Box)`
 
 export const StepperContainer = styled(Box)`
   width: 100%;
+  margin: 30px 0 20px 0;
   padding-bottom: 24px;
 `;
 
@@ -23,16 +24,17 @@ export const SelectionButton = styled(Button)`
 `;
 
 export const NextButton = styled(Button)`
-  width: 120px;
+  width: 170px;
 `;
 
 export const PrevButton = styled(Button)`
-  width: 120px;
+  width: 170px;
 `;
 
 export const ButtonContainer = styled(Box)`
   display: flex;
+  position: absolute;
   justify-content: space-between;
-  width: 100%;
-  margin-top: 16px;
+  width: 350px;
+  top: 600px;
 `;

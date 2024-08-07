@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import AccountSetup from '../../components/signUp/accountSetup';
 import NicknameSetting from '../../components/signUp/nicknameSetting';
 import GenderSelection from '../../components/signUp/genderSelection';
@@ -16,11 +15,11 @@ import {
 import { Stepper, Step, StepLabel } from '@mui/material';
 
 const steps = [
-  '아이디와 비밀번호',
-  '닉네임 설정',
+  '아이디와\n비밀번호',
+  '닉네임\n설정',
   '성별 선택',
   '나이 입력',
-  'MBTI 선택',
+  'MBTI\n선택',
 ];
 
 ///////
@@ -129,20 +128,11 @@ const SignUp: React.FC = () => {
       };
       console.log('Sending payload:', payload); // Debugging line
 
-      await axios.post(
-        '/api/users/register',
-        payload,
-        {
-          headers: {
-            Credentials: 'include',
-            'Content-Type': 'application/json',
-          },
-        }
-      );
+      localStorage.setItem('user', JSON.stringify(payload));
+
       navigate('/signUpDone');
     } catch (error) {
       console.error('회원가입 오류:', error);
-      // 오류 처리 로직 추가
     }
   };
 
@@ -152,7 +142,14 @@ const SignUp: React.FC = () => {
         <Stepper activeStep={step} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel>
+                {label.split('\n').map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </StepLabel>{' '}
             </Step>
           ))}
         </Stepper>
@@ -168,9 +165,13 @@ const SignUp: React.FC = () => {
         </PrevButton>
         <NextButton
           variant="contained"
-          color="primary"
           onClick={handleNext}
           disabled={isNextButtonDisabled()}
+          style={{
+            backgroundColor: isNextButtonDisabled()
+              ? '#f2f2f2'
+              : 'var(--active-button-color)',
+          }}
         >
           {step === steps.length - 1 ? '완료' : '다음'}
         </NextButton>

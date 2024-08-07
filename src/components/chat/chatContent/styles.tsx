@@ -38,12 +38,6 @@ export const Header = styled.div`
     margin: 0;
     font-weight: 600;
   }
-
-  .settings {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
 `;
 
 export const Body = styled.div`
@@ -51,6 +45,7 @@ export const Body = styled.div`
   overflow-y: auto;
   margin-top: 20px;
   margin-right: -20px;
+  margin-left: -20px;
 
   .chat__items {
     display: flex;

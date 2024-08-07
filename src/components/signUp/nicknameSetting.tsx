@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, TextField } from '@mui/material';
-import { Container } from './styles';
+import { Container, CustomTextField } from './styles';
 
 interface NicknameSettingProps {
   onSelect: (data: { nickname: string }) => void;
@@ -27,7 +27,7 @@ const NicknameSetting: React.FC<NicknameSettingProps> = ({
       <Typography variant="body2">
         프로필에 표시되는 이름으로, 언제든 변경할 수 있어요.
       </Typography>
-      <TextField
+      <CustomTextField
         label="닉네임을 입력해주세요"
         variant="outlined"
         fullWidth
