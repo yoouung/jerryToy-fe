@@ -23,6 +23,8 @@ const steps = [
   'MBTI 선택',
 ];
 
+///////
+
 const SignUp: React.FC = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
