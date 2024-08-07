@@ -23,7 +23,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isButtonActive, setIsButtonActive] = useState(true);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
