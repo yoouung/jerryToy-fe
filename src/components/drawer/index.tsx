@@ -80,22 +80,22 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
     console.log(selectedTags);
 
     if (selectedTags && selectedTags.length === 0) {
-      getAllPosts();
+      // getAllPosts();
     } else if (selectedTags) {
       const tagNames = selectedTags.map((tag) => tag.name);
-      getPostsByTag(tagNames);
+      // getPostsByTag(tagNames);
     }
   }, [selectedTags]);
 
-  const getAllPosts = async () => {
-    const { data } = await axios.get(`${baseUrl}/api/post/all`);
-    setPosts(data);
-  };
+  // const getAllPosts = async () => {
+  //   const { data } = await axios.get(`${baseUrl}/api/post/all`);
+  //   setPosts(data);
+  // };
 
-  const getPostsByTag = async (tags: string[]) => {
-    const { data } = await axios.post(`${baseUrl}/api/post/all`, tags);
-    setPosts(data);
-  };
+  // const getPostsByTag = async (tags: string[]) => {
+  //   const { data } = await axios.post(`${baseUrl}/api/post/all`, tags);
+  //   setPosts(data);
+  // };
 
   const renderTags = (tagsToRender: Tag[]) =>
     tagsToRender.map((tag, index) => (
@@ -131,15 +131,11 @@ const DrawerComponent: React.FC<DrawerComponentProps> = ({
             : renderTags(selectedTags))}
       </CategoryList>
       <Divider />
-      <ListComponent posts={posts} onPostClick={navigateToPost} />
+      <ListComponent posts={posts} onPostClick={() => navigate('/post')} />
       <Divider />
       <Footer />
     </div>
   );
-
-  const navigateToPost = () => {
-    navigate('/post');
-  };
 
   return (
     <div>

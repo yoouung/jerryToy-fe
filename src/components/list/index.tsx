@@ -22,11 +22,10 @@ interface ListComponentProps {
   onPostClick: () => void;
 }
 
-const ListComponent: React.FC<ListComponentProps> = ({ posts }) => {
-  function onPostClick(): React.MouseEventHandler<HTMLDivElement> | undefined {
-    throw new Error('Function not implemented.');
-  }
-
+const ListComponent: React.FC<ListComponentProps> = ({
+  posts,
+  onPostClick,
+}) => {
   return (
     <List
       style={{
@@ -49,7 +48,7 @@ const ListComponent: React.FC<ListComponentProps> = ({ posts }) => {
           <ListItemButton
             disableRipple
             sx={{ '&:hover': { backgroundColor: 'transparent' } }}
-            onClick={onPostClick()}
+            onClick={onPostClick}
           >
             <ListItemText
               primary={post.title}
