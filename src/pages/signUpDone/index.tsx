@@ -7,7 +7,7 @@ const SignUpDone: React.FC = () => {
   const navigate = useNavigate();
 
   const handleStart = () => {
-    navigate('/map');
+    navigate('/login');
   };
 
   return (
